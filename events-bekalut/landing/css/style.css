@@ -1,0 +1,56 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: 'Open Sans Hebrew', sans-serif;
+}
+body {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0a0a0a;
+}
+h3 {
+  font-size: 2.5rem;
+}
+header {
+  background: #014083 url(../images/pic_header.jpg) no-repeat scroll center -60px / cover;
+  height: 580px;
+  color: #fff;
+}
+header h1 {
+  font-size: 2.5rem;
+}
+header .header-title {
+  margin-bottom: 6rem;
+}
+.my-button {
+  background: #c1c1c1;
+  background: -webkit-linear-gradient(#fff, #c1c1c1);
+  background: -o-linear-gradient(#fff, #c1c1c1);
+  background: -moz-linear-gradient(#fff, #c1c1c1);
+  background: linear-gradient(#fff, #c1c1c1);
+  color: #4a16ae;
+  padding: 6px 15px 8px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  font-size: 1.5rem;
+}
+.game-box {
+  border: 8px #fff solid;
+  border-radius: 15px;
+  box-shadow: 5px 5px 2px #888;
+  margin-bottom: .75rem;
+}
+#how-it-works {
+  padding: 3rem 0 0;
+}
+#games {
+  padding: 3rem 0;
+  background-color: #d7e0f7;
+  color: #4d75da;
+}

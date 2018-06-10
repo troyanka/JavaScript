@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>BMI Calculator</title>
+    <style>
+        .results{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="height">Height(cm)</label>
+                    <input type="number" class="form-control" id="height" placeholder="Please enter yor height" min="40" max="250">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight(kg)</label>
+                    <input type="number" class="form-control" id="weight" placeholder="Please enter yor weight">
+                </div>
+                <button type="submit" class="btn btn-primary calculate-bmi">Calculate</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="results">
+                 <h1>Results:<span class="bmi_value"></span></h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script>
+    // vanilla JS
+    /*var button = document.getElementsByClassName("calculate-bmi")[0];
+    button.addEventListener( 'click', function (event) {
+        var height = parseInt(document.getElementById('height').value);
+        var weight = parseInt(document.getElementById('weight').value);
+
+        var bmi = height * weight / 10;
+
+        document.querySelector('.bmi_value').innerHTML = bmi;
+        document.querySelector('.results').style.display = 'block';
+        event.preventDefault();
+    } )*/
+
+    // jQuery
+    $('.calculate-bmi').on('click', function (event) {
+        var height = $('#height').val();
+        var weight = $('#weight').val();
+        var bmi = height * weight / 10;
+
+        $('.bmi_value').html(bmi);
+
+        // $('.results').css('display', 'block' );
+        $('.results').show();
+
+        event.preventDefault();
+    });
+
+
+</script>
+</body>
+</html>
