@@ -46,6 +46,9 @@ header .header-title {
   box-shadow: 5px 5px 2px #888;
   margin-bottom: .75rem;
 }
+.game-box img {
+  width: 100%;
+}
 #how-it-works {
   padding: 3rem 0 0;
 }
