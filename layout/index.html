@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        li{
+            display: inline-block;
+            width: 200px;
+            margin-right: -4px;
+        }
+        li a{
+            display: block;
+            background: #0AA6D6;
+            padding: 10px;
+        }
+
+        .boxes{
+            width: 1000px;
+        }
+
+        .box{
+            width: 33.333333%;
+            height: 100px;
+            display: inline-block;
+            margin-right: -4px;
+            border:1px solid red;
+            padding: 10px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                <a href="#">Red</a>
+            </li>
+            <li>
+                <a href="#">Blue</a>
+            </li>
+            <li>
+                <a href="#">Green</a>
+            </li>
+        </ul>
+
+        <span>text</span><span>text</span>
+    </div>
+    <div class="boxes">
+        <div class="box" style="background: #0c5460;"></div>
+        <div class="box" style="background: #0ebfdd;"></div>
+        <div class="box" style="background: #1DC116; height: 200px;"></div>
+    </div>
+</body>
+</html>
