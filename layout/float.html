@@ -20,8 +20,18 @@
             clear: both;
         }
 
+        .table {
+            display: table;
+            width: 100%;
+        }
+        .table ul{
+            display: table-row;
+            width: 100%;
+        }
+        .table li {
+            display: table-column;
+        }
     </style>
-
 </head>
 <body>
     <ul class="clearfix">
@@ -37,8 +47,7 @@
         <!--<div style="clear: both;"></div>-->
     </ul>
     <div>
-
-        <p>
+        <p class="clearfix">
             חוגגים בר-מצווה, חתונה או אירוע משפחתי אחר? מחפשים פעילות שהאורחים לא ישכחו?
 
             <img src="yair_mitzpe.jpg" alt="" style="float: left;" width="100px">
@@ -46,6 +55,20 @@
 
             בדרך זו האורחים לומדים להכיר את בעל השמחה באופן ייחודי, מהנה ומשעשע. המשחק מיועד לסמארטפונים אך ניתן להפעיל אותו מכל מחשב המחובר לאינטרנט.
         </p>
+    </div>
+    <div class="table">
+        <ul>
+            <li>
+                <a href="#">Red</a>
+            </li>
+            <li>
+                <a href="#">Blue</a>
+            </li>
+            <li>
+                <a href="#">Green</a>
+            </li>
+            <!--<div style="clear: both;"></div>-->
+        </ul>
     </div>
 </body>
 </html>

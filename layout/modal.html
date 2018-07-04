@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <style>
+            .wrapper{
+                width: 1000px;
+                min-height: 1500px;
+                background-color: #0c5460;
+                margin: 0 auto;
+                position: relative;
+                z-index: 10;
+            }
+            .modal{
+                width: 500px;
+                margin: 0 auto;
+                position: absolute;
+                top: 200px;
+                left: 45%;
+                background-color: #0ebfdd;
+                opacity: 0;
+                transition: all 0.5s;
+
+            }
+            .overlay{
+                background-color: rgba(42, 42, 42, 0.59);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <button id="myBtn">
+                Click me!
+            </button>
+        </div>
+
+        <div class="overlay">
+
+        </div>
+
+        <div class="modal">
+            <p>text1</p>
+            <p>text1</p>
+            <p>text1</p>
+            <p>text1</p>
+        </div>
+
+    <script>
+        document.getElementById('myBtn').addEventListener('click', function (event) {
+            document.querySelector('.overlay').style.opacity='1';
+            document.querySelector('.modal').style.opacity='1';
+            document.querySelector('.overlay').style.zIndex='104';
+            document.querySelector('.modal').style.zIndex='110';
+        });
+    </script>
+    </body>
+</html>

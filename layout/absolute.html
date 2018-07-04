@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            .wrapper{
+                width: 1000px;
+                min-height: 1500px;
+                background-color: #0c5460;
+                margin: 0 auto;
+                position: relative;
+            }
+            .wrapper:hover .absolute{
+                opacity: 1;
+
+            }
+            .absolute,
+            .absolute1 {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                /*opacity: 0;
+                transition: all 0.5s;*/
+            }
+            .absolute{
+                background-color: aquamarine;
+                top: 0;
+                left: 0;
+            }
+            .absolute1{
+                background-color: red;
+                top: 30px;
+                left: 30px;
+            }
+
+            .page-header {
+                position: fixed;
+                width: 100%;
+                top: 0;
+                background-color: #1DC116;
+                z-index: 999;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="page-header">
+            page-header
+        </div>
+        <div class="wrapper">
+            <p>Text</p>
+            <div class="absolute">
+
+            </div>
+            <div class="absolute1">
+
+            </div>
+        </div>
+
+    </body>
+</html>
