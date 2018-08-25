@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+}
+
+#notes {
+    min-height: 400px;
+    border: 3px solid saddlebrown;
+    background: url('../img/board_texture.jpg');
+}
+.note{
+    background: url( '../img/note.png') no-repeat center center;
+    background-size: cover;
+    width: 300px;
+    height: 297px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 50px;
+    position: relative;
+    transition: all 1s;
+    opacity: 0;
+}
+
+.note .content{
+    overflow-x: hidden;
+    overflow-y: auto;
+    word-break: break-all;
+    max-height: 90%;
+}
+.form-wrapper{
+    background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+}
+textarea {
+
+    width: 600px;
+    height: 300px;
+    font: normal 14px verdana;
+    line-height: 25px;
+    padding: 2px 10px;
+    border: solid 1px #ddd;
+}
+
+.trash{
+    opacity: 0;
+    padding: 0.33333rem;
+    background: #f04124;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+    transition: opacity .5s;
+    color: #fff;
+}
+.note:hover .trash{
+    opacity: 1;
+}
+
+#error{
+    display: none;
+}
