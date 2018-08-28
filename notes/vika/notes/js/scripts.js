@@ -16,10 +16,14 @@ function addNote(){
     var chosenDate = document.querySelector('input[type="date"]').value;
 
     var id= saveToLS(myNote, chosenDate);
-    console.log(id);
+    //consoleconsole.log(id);
     displayNote(id, myNote, chosenDate);
 
 }
+
+function removeNote() { 
+
+ }
 
 function displayNote(id, myNote, chosenDate) {
     var savedNotes = document.getElementById('notes');
@@ -29,17 +33,31 @@ function displayNote(id, myNote, chosenDate) {
     divForNote.innerHTML = myNote + " " + chosenDate;
     //vika - to check
     divForNote.setAttribute("data-note-id", id);
+
     var deleteButton = document.createElement('button');
     deleteButton.innerHTML = 'Delete note';
     deleteButton.className="delete-note";
     deleteButton.setAttribute("data-note-id", id);
+    deleteButton.onclick = removeNote;
     //deleteButton.setAttribute("onclick", "deleteNote()");
+
+    // var trashDIV = document.createElement("div");
+    // trashDIV.innerHTML = "DELETE";
+    // trashDIV.className = 'trash';
+    // trashDIV.onclick = removeNote;
     
     divForNote.appendChild(deleteButton);
 
     savedNotes.appendChild(divForNote);
 }
 
+function removeNote(event){
+    console.log("here");
+    var noteToRemove = event.target.dataset.noteId;
+    //noteToRemove.dataset.noteId
+    
+    console.log(noteToRemove);
+}
 
 function saveToLS(noteText, date) {
     var timeStamp = new Date().getTime();
@@ -57,11 +75,9 @@ function saveToLS(noteText, date) {
     return timeStamp;
 }
 
-var buttons = document.getElementsByClassName("delete-note");
-var buttonsNum = buttons.length;
+// var buttons = document.getElementsByClassName("delete-note");
+// var buttonsNum = buttons.length;
 
-for(var i = 0; i< buttonsNum; i ++){
-    buttons[i].onclick = function(e){
-      console.log(this.id);
-    }
-}
+// for(var i = 0; i< buttonsNum; i ++){
+//     buttons[i].addEventListener
+// }
