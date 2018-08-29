@@ -31,21 +31,14 @@ function displayNote(id, myNote, chosenDate) {
 
     divForNote.className = 'note';
     divForNote.innerHTML = myNote + " " + chosenDate;
-    //vika - to check
     divForNote.setAttribute("data-note-id", id);
 
+    //create delete button and add to the DOM
     var deleteButton = document.createElement('button');
     deleteButton.innerHTML = 'Delete note';
     deleteButton.className="delete-note";
     deleteButton.setAttribute("data-note-id", id);
     deleteButton.onclick = removeNote;
-    //deleteButton.setAttribute("onclick", "deleteNote()");
-
-    // var trashDIV = document.createElement("div");
-    // trashDIV.innerHTML = "DELETE";
-    // trashDIV.className = 'trash';
-    // trashDIV.onclick = removeNote;
-    
     divForNote.appendChild(deleteButton);
 
     savedNotes.appendChild(divForNote);
@@ -55,9 +48,12 @@ function removeNote(event){
     var noteToRemoveId = event.target.dataset.noteId;
     console.log(noteToRemoveId);
 
-    var noteToRemoveDiv = event.target.parentElement;
+    //delete the div from the DOM
+    var noteToRemoveDiv = event.target.parentElement.remove();
+
     //var divToDelete = document.getElementsByTagName('div')['data-note-id' = noteToRemoveId];
-    console.log(noteToRemoveDiv);
+    //console.log(noteToRemoveDiv);
+    
 }
 
 function saveToLS(noteText, date) {
@@ -75,6 +71,8 @@ function saveToLS(noteText, date) {
         // should return the id
     return timeStamp;
 }
+
+function deleteFromLS (noteId) {  }
 
 // var buttons = document.getElementsByClassName("delete-note");
 // var buttonsNum = buttons.length;
