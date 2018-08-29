@@ -16,7 +16,7 @@ function addNote(){
     var chosenDate = document.querySelector('input[type="date"]').value;
 
     var id= saveToLS(myNote, chosenDate);
-    //consoleconsole.log(id);
+    //console.log(id);
     displayNote(id, myNote, chosenDate);
 
 }
@@ -52,11 +52,12 @@ function displayNote(id, myNote, chosenDate) {
 }
 
 function removeNote(event){
-    console.log("here");
-    var noteToRemove = event.target.dataset.noteId;
-    //noteToRemove.dataset.noteId
-    
-    console.log(noteToRemove);
+    var noteToRemoveId = event.target.dataset.noteId;
+    console.log(noteToRemoveId);
+
+    var noteToRemoveDiv = event.target.parentElement;
+    //var divToDelete = document.getElementsByTagName('div')['data-note-id' = noteToRemoveId];
+    console.log(noteToRemoveDiv);
 }
 
 function saveToLS(noteText, date) {
