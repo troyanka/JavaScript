@@ -53,6 +53,13 @@ function removeNote(event){
 
     //var divToDelete = document.getElementsByTagName('div')['data-note-id' = noteToRemoveId];
     //console.log(noteToRemoveDiv);
+
+    
+
+    // localStorage.getItem('notes') !== null ){
+    // var existingNotes = JSON.parse(localStorage.getItem('notes'));
+    // existingNotes.push( { text: noteText, date, timeStamp } );
+    // localStorage.setItem('notes', JSON.stringify(existingNotes));
     
 }
 
@@ -72,7 +79,6 @@ function saveToLS(noteText, date) {
     return timeStamp;
 }
 
-function deleteFromLS (noteId) {  }
 
 // var buttons = document.getElementsByClassName("delete-note");
 // var buttonsNum = buttons.length;
