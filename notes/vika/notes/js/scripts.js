@@ -48,18 +48,24 @@ function removeNote(event){
     var noteToRemoveId = event.target.dataset.noteId;
     console.log(noteToRemoveId);
 
+    //delete the div from the Local storage
+    var existingNotes = JSON.parse(localStorage.getItem('notes'));
+
+    var indexOfRemoverElem = existingNotes.findIndex(obj => obj.timeStamp == noteToRemoveId);
+
+    console.log(existingNotes);
+    console.log('index to delte:', indexOfRemoverElem);
+    var result = existingNotes.find(obj => {
+        return obj.timeStamp == noteToRemoveId
+    })
+    console.log("result", result);
+    existingNotes.splice(indexOfRemoverElem, 1);
+    console.log("after delte", existingNotes);
+
+    localStorage.setItem('notes', JSON.stringify(existingNotes));
+
     //delete the div from the DOM
     var noteToRemoveDiv = event.target.parentElement.remove();
-
-    //var divToDelete = document.getElementsByTagName('div')['data-note-id' = noteToRemoveId];
-    //console.log(noteToRemoveDiv);
-
-    
-
-    // localStorage.getItem('notes') !== null ){
-    // var existingNotes = JSON.parse(localStorage.getItem('notes'));
-    // existingNotes.push( { text: noteText, date, timeStamp } );
-    // localStorage.setItem('notes', JSON.stringify(existingNotes));
     
 }
 
@@ -78,11 +84,3 @@ function saveToLS(noteText, date) {
         // should return the id
     return timeStamp;
 }
-
-
-// var buttons = document.getElementsByClassName("delete-note");
-// var buttonsNum = buttons.length;
-
-// for(var i = 0; i< buttonsNum; i ++){
-//     buttons[i].addEventListener
-// }
