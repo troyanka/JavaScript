@@ -1,0 +1,29 @@
+.main-container{
+    width: 50%;
+    margin: 0 auto;
+} 
+.notes{
+    border: 3px solid saddlebrown;
+    min-height: 400px;
+    background: url(../img/board_texture.jpg);
+}
+.note{
+    background: url(img/note.png) no-repeat;
+    width: 300px;
+    height: 297px;
+    padding: 50px;
+}
+.form-wrapper{
+    background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.label-text{
+    display: block;
+    margin-bottom: .5rem
+}
+
+textarea{
+   width: 500px;
+   height: 100px;
+}
