@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+img{
+    max-width: 100%;
+}
+
+.container{
+    background-color: #0A246A;
+    width: 50%;
+    margin: 50px auto;
+    padding: 10px;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item{
+    background: #9c5d90;
+    color: #fff;
+    padding: 10px 5px;
+    margin: 5px;
+    flex-grow: 1;
+}
+
+
+/* FLEXBOX */
+.container{
+    display: flex;
+    height: 250px;
+}
+
+.item-3{
+    flex-grow: 2;
+}
