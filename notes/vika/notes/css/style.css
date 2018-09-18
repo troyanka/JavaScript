@@ -8,10 +8,11 @@
     background: url(../img/board_texture.jpg);
 }
 .note{
-    background: url(img/note.png) no-repeat;
+    background: url(../img/note.png) no-repeat;
     width: 300px;
     height: 297px;
     padding: 50px;
+    display: inline-block;
 }
 .form-wrapper{
     background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;

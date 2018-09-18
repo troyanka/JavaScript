@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       function changeColorBut() {
+           var userChoise = document.getElementById('usersChose').value;
+           var title = document.getElementById('myTitle').style.color = userChoise;
+        }
+        function changeColorTitle() {
+           var title = document.getElementById('myTitle').style.color = "green";
+        }
+    </script>
+</head>
+<body>
+        <h1 onclick="changeColorTitle()" id="myTitle">My title</h1>
+        <button onclick="changeColorBut()">Chane h1 color</button>
+        <input id="usersChose" type="text"/>
+</body>
+</html>

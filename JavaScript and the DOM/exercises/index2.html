@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+       <ul>
+            <li>Afghanistan - Kabul</li>
+            <li>Albania - Tirana</li>
+            <li>Algeria - Algiers</li>
+            <li>Andorra - Andorra la Vella</li>
+            <li>Angola - Luanda</li>
+            <li>Antigua and Barbuda - Saint John's</li>
+            <li>Argentina - Buenos Aires</li>
+            <li>Armenia - Yerevan</li>
+            <li>Australia - Canberra</li>
+            <li>Austria - Vienna</li>
+       </ul>
+
+       <script>
+        var liItems = document.getElementsByTagName('li');
+        
+        for(var i = 0; i < liItems.length; i++){
+            if( i % 2){
+                liItems[i].style.color = 'purple';
+            }
+            else{
+                liItems[i].className = 'red-color';
+            }
+        }
+
+        var redLiItems = document.getElementsByClassName('red-color');
+        
+        for(var i = 0; i< redLiItems.length; i++){
+            redLiItems[i].style.color =  'red';
+        }
+
+        var evenItms = document.querySelectorAll('li:nth-child(even)');
+        for(var i = 0; i< evenItms.length; i++){
+            evenItms[i].style.background = "lightgray";
+        }
+      </script>
+</body>
+</html>

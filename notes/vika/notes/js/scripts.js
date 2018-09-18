@@ -21,10 +21,6 @@ function addNote(){
 
 }
 
-function removeNote() { 
-
- }
-
 function displayNote(id, myNote, chosenDate) {
     var savedNotes = document.getElementsByClassName('notes')[0];
     var divForNote = document.createElement('div');
