@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+                <ul>
+                        <li>Blue
+                                <button class="up">Up</button>
+                                <button class="down">Down</button>
+                        </li>
+                        <li>Green
+                                <button class="up">Up</button>
+                                <button class="down">Down</button>
+                        </li>
+                        <li>Red
+                                <button class="up">Up</button>
+                                <button class="down">Down</button>
+                        </li>
+                         <li>Brown
+                                <button class="up">Up</button>
+                                <button class="down">Down</button>
+                        </li>
+                </ul>
+                        
+            
+       <script>
+                var parentUl = document.querySelector('ul');
+                parentUl.addEventListener('click', function (event) {
+                        if(event.target.className == 'up'){
+                                var parentElem = event.target.parentNode;
+                                var previousElem = parentElem.previousElementSibling;
+                                
+                                if(previousElem){
+                                        parentUl.insertBefore(parentElem, previousElem);
+                                }
+                        }   
+                        else if(event.target.className == 'down'){
+
+                        }              
+                })
+        </script>
+</body>
+</html>

@@ -4,60 +4,79 @@
     <meta charset="UTF-8">
     <title>Title of the document</title>
     <style>
-       * {
-        box-sizing: border-box;
-       }
-        /* FLOAT Example */
-        #float-section{
-            overflow: auto;
+        * {
+            box-sizing: border-box;
         }
-       #div1{
-           width: 75%;
-           background-color: aquamarine;
-           padding: 1rem;
-           float: left;
-           clear: left;
-       }
-       #div2{
-           width: 25%;
-           background-color: antiquewhite;
-           padding: 1rem;
-           float: right;
-           clear: right;
-       }
+        div{
+            padding: 1rem;
+        }
+       
+         /*FLOAT Example*/
+        #float-section{
+            clear: both;
+        }
+        #float-section div{
+            float: left;
+        }
+        .narrow-div{
+            width: 25%;
+            background-color: antiquewhite;
+        }
+        .wide-div{
+            width: 75%;
+            background-color: aquamarine;
+        }
 
-    /* FLEX example */
+        /* FLEX example */
         #flex-container{
             display: flex;
         }
-        #div3{
-           background-color: green;
-           padding: 1rem;
-           flex: 1 1 75%;
-       }
-       #div4{
-           background-color: greenyellow;
-           padding: 1rem;
-           flex: 1 1 25%;
-       }
+        .first-elem{
+            background-color: green;
+            flex: 1 1 75%;
+        }
+        .second-elem{
+            background-color: greenyellow;
+            flex: 1 1 25%;
+        }
+
+        /* Display-block example */
+        .block-inline {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: -4px;
+        }
+      
+        .end{
+            margin-right: 0;
+        }
     </style>
 </head>
 
 <body>
     <div id="float-section">
-            <h1>Align divs with box-sizing: border-box and float:</h1>
-            <p>If you are using inline-block, any newline character or whitespace you have after the element and before another inline element, will be counted as a space. If you want the blocks to stack side by side like in your picture, your HTML would need to be like this.</p>
-            <p>+ Check <a href="https://www.w3schools.com/css/css_float.asp">The clearfix Hack</a></p>
+        <h1>Align divs with box-sizing: border-box and float:</h1>
+        <p>If you are using inline-block, any newline character or whitespace you have after the element and before another inline element, will be counted as a space. If you want the blocks to stack side by side like in your picture, your HTML would need to be like this.</p>
+        <p>+ Check <a href="https://www.w3schools.com/css/css_float.asp">The clearfix Hack</a></p>
 
-            <div id="div1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem nisl, ultricies tincidunt nulla id, porta faucibus ex. Nam posuere sapien eget massa consectetur, eu ullamcorper tellus pellentesque. Donec ac laoreet tellus. Integer vitae metus dolor. Donec viverra nisi tempus magna posuere feugiat. Aliquam sed lacinia massa, ac porttitor ex. Phasellus ac rhoncus odio. Morbi ornare risus ac varius molestie. Nam ac finibus lacus, a feugiat mauris. Vivamus luctus eros ut tristique facilisis. Etiam non nisl sit amet turpis ultricies egestas a in ipsum. Aliquam lobortis scelerisque eros id lacinia. Morbi nec molestie dui. Donec purus sem, rhoncus non sagittis sed, semper id risus. Aliquam iaculis vulputate facilisis. Nunc dictum ex non mollis cursus.</div>
-            
-            <div id="div2">Fusce in est vitae quam gravida vestibulum a sed libero. Cras lacinia consequat velit. Pellentesque lectus tortor, rhoncus id porttitor eu, congue semper dui. Mauris et finibus dui. Maecenas eu congue ante. Aenean auctor, quam at volutpat fringilla, purus sapien consequat risus, quis condimentum ligula turpis a enim. Nulla vel auctor nisl. Nam vehicula laoreet tortor sit amet rutrum. Donec pharetra tempor rhoncus. Integer varius eleifend mauris, a commodo ligula. Sed ornare gravida erat nec tempor. Donec sagittis vulputate ullamcorper. Aliquam accumsan a lorem quis facilisis. Ut quam dui, blandit eget maximus non, finibus vitae lorem. Pellentesque consectetur ultricies nibh.</div>
+        <div class="wide-div">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem nisl, ultricies tincidunt nulla id, porta faucibus ex. Nam posuere sapien eget massa consectetur, eu ullamcorper tellus pellentesque. Donec ac laoreet tellus. Integer vitae metus dolor. Donec viverra nisi tempus magna posuere feugiat. Aliquam sed lacinia massa, ac porttitor ex. Phasellus ac rhoncus odio. Morbi ornare risus ac varius molestie. Nam ac finibus lacus, a feugiat mauris. Vivamus luctus eros ut tristique facilisis. Etiam non nisl sit amet turpis ultricies egestas a in ipsum. Aliquam lobortis scelerisque eros id lacinia. Morbi nec molestie dui. Donec purus sem, rhoncus non sagittis sed, semper id risus. Aliquam iaculis vulputate facilisis. Nunc dictum ex non mollis cursus.</div>
+        <div class="narrow-div">Fusce in est vitae quam gravida vestibulum a sed libero. Cras lacinia consequat velit. Pellentesque lectus tortor, rhoncus id porttitor eu, congue semper dui. Mauris et finibus dui. Maecenas eu congue ante. Aenean auctor, quam at volutpat fringilla, purus sapien consequat risus, quis condimentum ligula turpis a enim. Nulla vel auctor nisl. Nam vehicula laoreet tortor sit amet rutrum. Donec pharetra tempor rhoncus. Integer varius eleifend mauris, a commodo ligula. Sed ornare gravida erat nec tempor. Donec sagittis vulputate ullamcorper. Aliquam accumsan a lorem quis facilisis. Ut quam dui, blandit eget maximus non, finibus vitae lorem. Pellentesque consectetur ultricies nibh.</div>
     </div>
 
     <h1>Align divs with flex:</h1>
     <div id="flex-container">
-            <div id="div3">Nulla lorem elit, consequat vitae vulputate vel, viverra et turpis. Fusce rutrum mi quis felis auctor imperdiet. Morbi dui diam, volutpat in nulla eget, mattis porttitor ex. Morbi quis ex condimentum, dictum velit quis, dignissim nunc. Mauris felis velit, luctus vitae ligula et, lacinia dignissim nulla. Aenean lobortis nisi nulla, at faucibus orci mollis vitae. Cras lobortis suscipit orci ac ultricies. Integer rutrum justo et aliquam dapibus. Fusce sed dolor ligula. Vestibulum congue lectus non elementum imperdiet. Aliquam ultrices congue hendrerit. Proin in dui feugiat, laoreet dui id, dictum ante. Phasellus ornare dolor eros, eu mollis dui faucibus pharetra. Aliquam ac nibh a sem auctor tristique.</div>
-            <div id="div4">Nunc velit metus, malesuada vel sapien at, tempus ornare enim. Nam sed aliquet eros. Morbi vel rutrum leo, vitae fringilla mi. Curabitur suscipit, elit at aliquam faucibus, metus eros ullamcorper ipsum, consectetur blandit turpis nulla id ante. Duis mattis iaculis enim quis viverra. Etiam iaculis augue metus. Vivamus gravida erat diam, vel convallis turpis rhoncus et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus aliquet leo sed sodales venenatis. Vivamus scelerisque ligula a ex blandit sollicitudin at quis mi. Aenean sodales felis sed gravida condimentum. Nam sit amet nibh non est imperdiet gravida ut vitae ex. Mauris rutrum nisi laoreet velit eleifend, sed bibendum eros eleifend. Integer ullamcorper in urna sed pellentesque.</div>
+        <div class="first-elem">Nulla lorem elit, consequat vitae vulputate vel, viverra et turpis. Fusce rutrum mi quis felis auctor imperdiet. Morbi dui diam, volutpat in nulla eget, mattis porttitor ex. Morbi quis ex condimentum, dictum velit quis, dignissim nunc. Mauris felis velit, luctus vitae ligula et, lacinia dignissim nulla. Aenean lobortis nisi nulla, at faucibus orci mollis vitae. Cras lobortis suscipit orci ac ultricies. Integer rutrum justo et aliquam dapibus. Fusce sed dolor ligula. Vestibulum congue lectus non elementum imperdiet. Aliquam ultrices congue hendrerit. Proin in dui feugiat, laoreet dui id, dictum ante. Phasellus ornare dolor eros, eu mollis dui faucibus pharetra. Aliquam ac nibh a sem auctor tristique.</div>
+        <div class="second-elem">Nunc velit metus, malesuada vel sapien at, tempus ornare enim. Nam sed aliquet eros. Morbi vel rutrum leo, vitae fringilla mi. Curabitur suscipit, elit at aliquam faucibus, metus eros ullamcorper ipsum, consectetur blandit turpis nulla id ante. Duis mattis iaculis enim quis viverra. Etiam iaculis augue metus. Vivamus gravida erat diam, vel convallis turpis rhoncus et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus aliquet leo sed sodales venenatis. Vivamus scelerisque ligula a ex blandit sollicitudin at quis mi. Aenean sodales felis sed gravida condimentum. Nam sit amet nibh non est imperdiet gravida ut vitae ex. Mauris rutrum nisi laoreet velit eleifend, sed bibendum eros eleifend. Integer ullamcorper in urna sed pellentesque.</div>
+    </div>
+
+
+    <div id="inline-block">
+        <div class="block-inline wide-div">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem nisl, ultricies tincidunt nulla id, porta faucibus ex. Nam posuere sapien eget massa consectetur, eu ullamcorper tellus pellentesque. Donec ac laoreet tellus. Integer vitae metus dolor. Donec viverra nisi tempus magna posuere feugiat. Aliquam sed lacinia massa, ac porttitor ex. Phasellus ac rhoncus odio. Morbi ornare risus ac varius molestie. Nam ac finibus lacus, a feugiat mauris. Vivamus luctus eros ut tristique facilisis. Etiam non nisl sit amet turpis ultricies egestas a in ipsum. Aliquam lobortis scelerisque eros id lacinia. Morbi nec molestie dui. Donec purus sem, rhoncus non sagittis sed, semper id risus. Aliquam iaculis vulputate facilisis. Nunc dictum ex non mollis cursus.
+        </div>
+        <div class="block-inline narrow-div end">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem nisl, ultricies tincidunt nulla id, porta faucibus ex. Nam posuere sapien eget massa consectetur, eu ullamcorper tellus pellentesque. Donec ac laoreet tellus. Integer vitae metus dolor. Donec viverra nisi tempus magna posuere feugiat. Aliquam sed lacinia massa, ac porttitor ex. Phasellus ac rhoncus odio. Morbi ornare risus ac varius molestie. Nam ac finibus lacus, a feugiat mauris. Vivamus luctus eros ut tristique facilisis. Etiam non nisl sit amet turpis ultricies egestas a in ipsum. Aliquam lobortis scelerisque eros id lacinia. Morbi nec molestie dui. Donec purus sem, rhoncus non sagittis sed, semper id risus. Aliquam iaculis vulputate facilisis. Nunc dictum ex non mollis cursus.
+        </div>
     </div>
 </body>
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <ul>
+                <li>Text <button>Remove1</button></li>
+                <li>Text <button>Remove2</button></li>
+                <li>Text <button>Remove3</button></li>
+                <li>Text <button>Remove4</button></li>
+        </ul>
+            
+       <script>
+
+
+        // This solution doent work because i is always 4 - i left it to remember this case
+        // var allButtons = document.getElementsByTagName('button');
+        // for (var i = 0; i < allButtons.length; i++) {
+        //     var self = allButtons[i];
+        //     console.log(self);
+
+        //     self.addEventListener('click', function (event) {  
+        //         // prevent browser's default action
+        //         event.preventDefault();
+
+        //         // call your awesome function here
+        //         console.log(self.parentNode);
+        //         self.parentNode.remove();
+        //     });
+        // }
+
+
+        var myUl = document.getElementsByTagName('ul')[0];
+        myUl.addEventListener('click', function (event) {
+            var parentNode = event.target.parentNode.remove();
+         })
+        </script>
+</body>
+</html>

@@ -10,16 +10,16 @@ function init() {
 }
 init();
 
-// Button Add note 
-var addNoteButton = document.getElementsByClassName('add-note')[0];
-addNoteButton.addEventListener("click", function () {
-    var myNote = document.getElementsByClassName('myNote')[0].value;
+
+function addNote(){
+    var myNote = document.getElementById('myNote').value;
     var chosenDate = document.querySelector('input[type="date"]').value;
 
     var id= saveToLS(myNote, chosenDate);
+    //console.log(id);
     displayNote(id, myNote, chosenDate);
-});
 
+}
 
 function displayNote(id, myNote, chosenDate) {
     var savedNotes = document.getElementsByClassName('notes')[0];
@@ -34,27 +34,30 @@ function displayNote(id, myNote, chosenDate) {
     deleteButton.innerHTML = 'Delete note';
     deleteButton.className="delete-note";
     deleteButton.setAttribute("data-note-id", id);
-    deleteButton.addEventListener('click', removeNote);
-
-    //add delete button to each noto
+    deleteButton.onclick = removeNote;
     divForNote.appendChild(deleteButton);
+
     savedNotes.appendChild(divForNote);
 }
 
 function removeNote(event){
     var noteToRemoveId = event.target.dataset.noteId;
+    console.log(noteToRemoveId);
+
     //delete the div from the Local storage
     var existingNotes = JSON.parse(localStorage.getItem('notes'));
 
-    // TODO: convert not to ES6
     var indexOfRemoverElem = existingNotes.findIndex(obj => obj.timeStamp == noteToRemoveId);
+
+    console.log(existingNotes);
+    console.log('index to delte:', indexOfRemoverElem);
     var result = existingNotes.find(obj => {
-        return obj.timeStamp == noteToRemoveId;
+        return obj.timeStamp == noteToRemoveId
     })
-
+    console.log("result", result);
     existingNotes.splice(indexOfRemoverElem, 1);
+    console.log("after delte", existingNotes);
 
-    //save to Local storage without deled note
     localStorage.setItem('notes', JSON.stringify(existingNotes));
 
     //delete the div from the DOM
