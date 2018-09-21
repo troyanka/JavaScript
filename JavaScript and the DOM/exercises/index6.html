@@ -28,16 +28,19 @@
        <script>
                 var parentUl = document.querySelector('ul');
                 parentUl.addEventListener('click', function (event) {
-                        if(event.target.className == 'up'){
-                                var parentElem = event.target.parentNode;
-                                var previousElem = parentElem.previousElementSibling;
+                        var clickedElem = event.target.parentNode;
+                        if( event.target.className == 'up' ){
+                                var previousElem = clickedElem.previousElementSibling;
                                 
-                                if(previousElem){
-                                        parentUl.insertBefore(parentElem, previousElem);
+                                if (previousElem ){
+                                        parentUl.insertBefore(clickedElem, previousElem);
                                 }
                         }   
                         else if(event.target.className == 'down'){
-
+                                var nextElem = clickedElem.nextElementSibling;
+                                if( nextElem ){
+                                        parentUl.insertBefore(nextElem, clickedElem);
+                                }
                         }              
                 })
         </script>

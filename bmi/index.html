@@ -60,7 +60,7 @@
     $('.calculate-bmi').on('click', function (event) {
         var height = $('#height').val();
         var weight = $('#weight').val();
-        var bmi = height * weight / 10;
+        var bmi = weight / Math.pow(height/100, 3);
 
         $('.bmi_value').html(bmi);
 
