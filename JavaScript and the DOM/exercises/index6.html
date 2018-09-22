@@ -24,25 +24,65 @@
                         </li>
                 </ul>
                         
-            
        <script>
                 var parentUl = document.querySelector('ul');
+                unableButtons();
+                //dinamically add delete button to all the elements
+                var allLielems = parentUl.children;
+                        for(var i=0; i< allLielems.length; i++){
+                                allLielems[i].setAttribute("class", "myItem");
+                                var deleteButton = document.createElement('button');
+                                deleteButton.innerHTML = 'Delete';
+                                deleteButton.className="delete-item";
+                                allLielems[i].appendChild(deleteButton);
+                        }
+                
                 parentUl.addEventListener('click', function (event) {
                         var clickedElem = event.target.parentNode;
+                        
                         if( event.target.className == 'up' ){
                                 var previousElem = clickedElem.previousElementSibling;
-                                
-                                if (previousElem ){
+                                if ( previousElem ){
                                         parentUl.insertBefore(clickedElem, previousElem);
                                 }
+                               
+                                //unableButtons();
                         }   
                         else if(event.target.className == 'down'){
                                 var nextElem = clickedElem.nextElementSibling;
+                               
                                 if( nextElem ){
                                         parentUl.insertBefore(nextElem, clickedElem);
                                 }
-                        }              
-                })
+
+                                //unableButtons();
+                        } 
+                        else if(event.target.className == 'delete-item'){
+                                clickedElem.remove();
+                        }  
+
+                         unableButtons();
+                });
+
+                // TODO: check if there is more elegant way to do that
+                //Unable lastchild and firstChild buttons
+                function unableButtons() {
+
+                        var allDisabledButtons = parentUl.querySelectorAll('button[disabled = "true"]');
+                        console.log(allDisabledButtons);
+                        if(allDisabledButtons !== null){
+                                console.log(allDisabledButtons.length);
+                                for(var i = 0; i < allDisabledButtons.length; i++){
+                                        allDisabledButtons[i].removeAttribute('disabled');
+                                }
+                        }
+
+                        var lastItem = parentUl.lastElementChild;
+                        var firstItem = parentUl.firstElementChild;
+                  
+                        lastItem.querySelector('button[class = "down"]').setAttribute("disabled", true);
+                        firstItem.querySelector('button[class = "up"]').setAttribute("disabled", true);
+                  }
         </script>
 </body>
 </html>
