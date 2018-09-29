@@ -1,0 +1,49 @@
+.header {
+    background-color: lightblue;
+    padding: 20px;
+    border-bottom: 10px solid darkcyan;
+    color:darkcyan;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.header img {
+    float:right;
+}
+
+.game_panel{
+    width: 1200px;
+    margin: 0 auto;
+}
+.card {
+    background-color: pink;
+    height: 165px;
+    width: 165px;    
+    float: left;
+    margin: 5px;
+
+}
+.card img {
+    position: absolute;
+}
+.time{
+    font-size: 30px;
+    margin: 20px 0;
+}
+.time span{
+    color: #596E4A;
+}
+.flipped .back {
+    display: none;
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 20px;
+}
+
+.logout{
+    color: #dd4444;
+    font-size: 20px;
+    text-decoration: none;
+}

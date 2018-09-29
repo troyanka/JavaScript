@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var addAsync = ( a, b ) => {
+            return new Promise( ( resolve, reject ) => {
+                setTimeout( () => {
+                    if( typeof a === 'number' && typeof b === 'number' ) {
+                        resolve( a + b );
+                    } else {
+                        reject( 'Arguments must be numbers' );
+                    }
+                }, 2000 );
+            });
+        };
+
+        addAsync( '3', '5' ).then( ( results ) => {
+            console.log( 'Results:', results );
+            return addAsync( results, 44 );
+        }).then ( ( res2 ) => {
+            console.log( 'Results:', res2 );
+        }).catch( ( errorMsg ) => {
+            console.log( 'Error:', errorMsg );
+        });
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
