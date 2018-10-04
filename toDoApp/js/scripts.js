@@ -3,7 +3,7 @@ function init (){
     var existingTasks = JSON.parse(localStorage.getItem('tasks'));
     
     existingTasks.forEach(function(task) {
-       showTask(task.taskTimeStamp, task.taskTitle, task.taskDescription);
+       showTask(task.taskTimeStamp, task.taskTitle, task.taskDescription, task.taskDueDate);
     });
    }
 }
@@ -37,6 +37,8 @@ function removeTask(event) {
 }
 
 function showTask(taskTimeStamp, taskTitle, taskDescription, taskDueDate ){
+
+    console.log(taskDueDate);
   var tasksDesc = document.querySelector('.existing-tasks');
   
   //main div
@@ -83,7 +85,7 @@ function showTask(taskTimeStamp, taskTitle, taskDescription, taskDueDate ){
     var taskTitle = document.querySelector('.task-title').value;
     var taskDescription = document.querySelector('.task-description').value;
     var taskDueDate = document.querySelector('.task-due-date').value;
-    console.log(taskDueDate);
+    console.log('fhdh', taskDueDate);
 
     var taskTimeStamp = saveToLS(taskTitle, taskDescription, taskDueDate);
     showTask(taskTimeStamp, taskTitle, taskDescription, taskDueDate);
