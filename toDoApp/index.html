@@ -13,15 +13,20 @@
     <div class="main-container">
         <div class="form-wrapper mr-2">
             <label class="label-text">Title:
-                <input type="txt" class="form-control task-title">
+                <input type="txt" class="form-control task-title" required>
             </label> 
             
             <label class="label-text">Description:
                 <textarea class="form-control task-description" placeholder="Task Description"></textarea>
             </label>
+
+            <label class="label-text">Due date:
+                    <input type="date" class="form-control task-due-date">
+            </label>
+
             <button class="btn btn-primary add-task">ADD Task</button>
         </div>
-        <div class="existing-tasks ml-2"></div>
+        <div class="existing-tasks ml-2 card-deck"></div>
         <script src="js/scripts.js"></script>
 </div>
 </div>

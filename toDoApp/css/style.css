@@ -15,8 +15,12 @@
       flex-grow: 1;
 }
 .main-container .existing-tasks {
-  background-color: var(--secondary);
   width: 500px;
   -ms-flex-positive: 2;
       flex-grow: 2;
+}
+.main-container .existing-tasks .task {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  margin: 5px;
 }
