@@ -1,26 +1,22 @@
 .main-container {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .main-container .form-wrapper {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-positive: 1;
-      flex-grow: 1;
+  flex-direction: column;
+  flex-grow: 1;
 }
-.main-container .existing-tasks {
-  width: 500px;
-  -ms-flex-positive: 2;
-      flex-grow: 2;
+.main-container .existing-tasks,
+.main-container .finished-tasks {
+  flex-grow: 2;
 }
-.main-container .existing-tasks .task {
-  -ms-flex-preferred-size: 20%;
-      flex-basis: 20%;
+.main-container .existing-tasks .task,
+.main-container .finished-tasks .task {
+  flex-basis: 20%;
   margin: 5px;
+}
+.main-container .card-deck h1 {
+  flex-basis: 100%;
 }

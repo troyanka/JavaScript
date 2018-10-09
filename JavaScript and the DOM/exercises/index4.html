@@ -14,7 +14,6 @@
            function makeSomeActions() {
                
                var divProperties = document.getElementsByTagName('div')[0].style.getPropertyValue('display');
-               console.log(divProperties);
                 if(divProperties == 'none'){
                     document.getElementsByTagName('button')[0].textContent = 'Hide text';
                     document.getElementsByTagName('div')[0].style.display = 'block';
