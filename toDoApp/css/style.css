@@ -1,22 +1,3 @@
-.main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.main-container .form-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.main-container .existing-tasks,
-.main-container .finished-tasks {
-  flex-grow: 2;
-}
-.main-container .existing-tasks .task,
-.main-container .finished-tasks .task {
-  flex-basis: 20%;
-  margin: 5px;
-}
-.main-container .card-deck h1 {
-  flex-basis: 100%;
+.main-container button.task-done {
+  margin-left: 10px;
 }
