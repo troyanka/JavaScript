@@ -1,22 +1,18 @@
 
 let finishedTasks = localStorage.getItem('finished-tasks') ? JSON.parse(localStorage.getItem('finished-tasks')) : [];
+let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
 //Checks if there are existing (finished) tasks in the LS
 function init (){
   //check unfunished tasks
-   if(localStorage.getItem('tasks') !== null){
-    var existingTasks = JSON.parse(localStorage.getItem('tasks'));
-    
-    existingTasks.forEach(function(task) {
+   if(tasks.length > 0){
+    tasks.forEach(function(task) {
        showTask(task.timeStamp, task.taskTitle, task.description, task.DueDate, task.taskStatus);
     });
    }
 
    //check finished tasks
    if(finishedTasks.length > 0){
-     console.log('has finishedTasks');
-    //var finishedTasks = JSON.parse(localStorage.getItem('finished-tasks'));
-    
     finishedTasks.forEach(function(finishedTask) {
       showTask(finishedTask.timeStamp, finishedTask.taskTitle, finishedTask.description, finishedTask.DueDate, finishedTask.taskStatus);
     });
@@ -24,21 +20,12 @@ function init (){
 }
 init();
 
-//Save task to the LS
+//Save task to the LS ad return timeStamp
 function saveToLS(taskTitle, description, DueDate, taskStatus) {
    var timeStamp = new Date().getTime();
-   var isInLS = JSON.parse(localStorage.getItem('tasks'));
    
-   if(isInLS != null){
-    var existingTasks = isInLS;
-    existingTasks.push( { timeStamp, taskTitle, description, DueDate, "taskStatus":taskStatus } );
-    localStorage.setItem('tasks', JSON.stringify(existingTasks) );
-   }
-   else{
-    var newTask = [];
-    newTask.push( { timeStamp, taskTitle, description, DueDate, "taskStatus":taskStatus} );
-    localStorage.setItem('tasks', JSON.stringify(newTask) );
-   }
+   tasks.push( { timeStamp, taskTitle, description, DueDate, "taskStatus":taskStatus } );
+   localStorage.setItem('tasks', JSON.stringify(tasks) );
 
    return timeStamp;
 }
@@ -46,16 +33,14 @@ function saveToLS(taskTitle, description, DueDate, taskStatus) {
 //Remove task from the DOM & LS
 function removeTask(event) {
       var taskToDeleteId = event.target.parentElement.parentElement.dataset.noteId;
-      var existingTasks = JSON.parse(localStorage.getItem('tasks'));
-      var indexToDelete = existingTasks.findIndex(obj => obj.timeStamp == taskToDeleteId);
+      var indexToDelete = tasks.findIndex(obj => obj.timeStamp == taskToDeleteId);
       
       //push the deleted object to the finished-tasks array
-      var ObjToDelete = existingTasks[indexToDelete];
+      var ObjToDelete = tasks[indexToDelete];
       ObjToDelete.taskStatus = 'done'
       finishedTasks.push(ObjToDelete);
-
-      existingTasks.splice(indexToDelete, 1);
-      localStorage.setItem('tasks', JSON.stringify(existingTasks) );
+      tasks.splice(indexToDelete, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks) );
       event.target.parentElement.parentElement.remove();
 
       localStorage.setItem('finished-tasks', JSON.stringify(finishedTasks)); 
@@ -114,12 +99,7 @@ function showTask( timeStamp, taskTitle, description, DueDate, status ){
     addButton && taskBody.appendChild(addButton);
     taskDiv.appendChild(taskBody);
 
-    if(status == 'done'){
-      doneTasksDesc.appendChild(taskDiv);
-    }
-    else{
-      tasksDesc.appendChild(taskDiv);
-    }
+    status == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
 }
 
 var form = document.querySelector('form');
@@ -135,7 +115,7 @@ var form = document.querySelector('form');
       showTask(timeStamp, taskTitle.value, description.value, DueDate.value);
 
       //empty form-fields
-      // taskTitle.value = "";
-      // description.value = "";
-      // DueDate.value = "";
+      taskTitle.value = "";
+      description.value = "";
+      DueDate.value = "";
   });
