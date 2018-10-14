@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+
+</head>
+
+<body>
+<a href="https://www.youtube.com/watch?v=NV9sHLX-jZU">
+    Link to the you tube video about 'this'
+</a>
+
+    <script>
+    "use strict";
+
+    this.table = 'window table';
+
+    this.garage = {
+        table: 'garage table',
+    };
+	
+	//Instead of using a constructor we can use classes - It also has constructor and prototype method inside the class
+	class createRoom{
+        constructor(name){
+            this.table = `${name}s table`;
+        }
+        cleanTable(soap){
+            console.log(`cleaning ${this.table} using ${soap}`);
+        }
+    }
+
+   const jillsRoom = new createRoom('jill');
+   const johnsRoom = new createRoom('john');
+    
+    jillsRoom.cleanTable('some soap');
+    johnsRoom.cleanTable('some soap');
+    </script>
+</body>
+
+</html>

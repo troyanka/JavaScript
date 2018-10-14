@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+
+</head>
+
+<body>
+<a href="https://www.youtube.com/watch?v=NV9sHLX-jZU">
+    Link to the you tube video about 'this'
+</a>
+
+    <script>
+        "use strict";
+    //General:'this' refers to the object that it is inside. There are some exceptions of course
+
+    //1.'this' is inside global scope
+    //here 'this' means global scope, which means VR in a window scope
+     this.table = 'window table';
+     //console.log( window.table );
+
+    /*function is a sort of job, it`s not an object so if we try to access table inside a function,
+    it should not have any 'this'.
+    */
+     const cleanTable = function(soap){
+        //let that = this;
+
+        // const innerFunction = function(_soap){
+        //     //console.log(`cleaning ${this.table} using ${_soap}`);
+
+        //     //solution a - we get passed param that 
+        //     //console.log(`cleaning ${that.table} using ${_soap}`);
+
+
+        //     console.log(`cleaning ${this.table} using ${_soap}`);
+        // } 
+
+        //c. solution - arrow function. If we use 'this' inside, it will take 'this' from the outer scope and use that. In this case, the outer scope is scope of cleanTable function
+        const innerFunction = (_soap) => {
+            console.log(`cleaning ${this.table} using ${_soap}`);
+        } 
+        
+        //innerFunction(soap);
+
+        /*we get in error, again, because the inner function doesn`t recognize this inside it, without call,
+          to solve it we has 3 ways:
+        */
+        //a. Define 'this' outside the inner function [let that] and pass use it in the inner function
+        //innerFunction(soap);
+
+        //b. [not a good solution] call inner function byu passing it 'this' and soap. We can also use 'bind' It also works, but this is weird solution  
+        //innerFunction.call(this, soap);
+        //innerFunction.bind(this)(soap); // bind creates a new function
+
+        //c. Execute inner function as a regular function, but the inner function will be an arrow function
+        innerFunction(soap);
+        
+        //if we just invoke the function and not call it, It will try to access the global scope which is outside, but this is not a good idea. If we use 'strict' mode, it will give an error
+        //The function is not really knows what 'this' is because it is not an object.
+        //For that we have 'call' function
+        //console.log(`cleaning ${this.table}  using ${soap}`);
+     };
+
+    this.garage = {
+        table: 'garage table',
+        //we copied the method gere,
+        // cleanTable(){
+        //   //here we use 'this' and it means table inside the garage object
+        //   console.log(`cleaning ${this.table}`);
+        // }
+    };
+    //if I want assess table inside garage
+    //console.log( this.garage.table ); //or window.garage.table - this will be the same because it is in a global
+    //'this' is a public property of window which can be accessible from outside
+
+    //2.'this' inside an object
+    let johnsRoom = {
+      table: 'johns table',
+    //   cleanTable(){
+    //       //here we use 'this' and it means table inside the johnsRoom object
+    //       console.log(`cleaning ${this.table}`);
+    //   } 
+      //see inside this.garage
+    };
+    //In this case we cant use this.johnsRoom.table, because it`s private variable and not a public property of the window
+    //console.log( this.johnsRoom.table );// error - Uncaught TypeError: Cannot read property 'table' of undefined
+    //we have to use it this.johnsRoom.table
+    //console.log( johnsRoom.table );
+
+    //3.'this' inside a method
+    //johnsRoom.cleanTable();
+    //this.garage.cleanTable();
+
+    //4. 'this' inside a function
+    
+    //see explanation why it is not good to invoke (call) function in this way
+    //cleanTable();
+
+    //call function - it also can accept arguments
+    cleanTable.call(this, 'some soap'); //call function and passing it the obj we want the function to be executed on - in this case, 'this' is a global obj 
+    
+    cleanTable.call(this.garage, 'some soap');
+    cleanTable.call(johnsRoom, 'some soap'); //johnsRoom is a private variable
+
+    //5. 'this' inside an inner function
+    
+    </script>
+</body>
+
+</html>

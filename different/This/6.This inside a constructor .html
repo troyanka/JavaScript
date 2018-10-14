@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+
+</head>
+
+<body>
+<a href="https://www.youtube.com/watch?v=NV9sHLX-jZU">
+    Link to the you tube video about 'this'
+</a>
+
+    <script>
+    "use strict";
+
+    this.table = 'window table';
+
+    this.garage = {
+        table: 'garage table',
+    };
+	
+	//Constructor is a function, we need no use 'new' keyword
+	let createRoom  = function(name){
+	    this.table = `${name}s table`;
+    }
+
+   /*We dont have always to use call method, we can use instead constructor.prototype.method
+   It adds this method into prototype of the cleanRoom. Every obj that cleanRoom creates, will have that method automatically.
+   Its not part of the CreateRoom, but it`s on the prototype*/
+   createRoom.prototype.cleanTable = function(soap){
+            console.log(`cleaning ${this.table} using ${soap}`);
+   };
+
+   const jillsRoom = new createRoom('jill');
+   const johnsRoom = new createRoom('john');
+    
+    jillsRoom.cleanTable('some soap');
+    johnsRoom.cleanTable('some soap');
+    </script>
+</body>
+
+</html>
