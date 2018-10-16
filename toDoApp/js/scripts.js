@@ -2,9 +2,10 @@
 let finishedTasks = localStorage.getItem('finished-tasks') ? JSON.parse(localStorage.getItem('finished-tasks')) : [];
 let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
-//TODO: Add sort according to due date https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
 const sortedTasks = tasks.slice().sort(); //// new instance of tasks array is created and sorted
 const sortedFinishedTasks = finishedTasks.slice().sort(); //// new instance of finishedTasks array is created and sorted
+
+//TODO: add clear all button localStorage.clear();
 
 //Sort task according to their due dates
 function compare(a, b) {
@@ -34,12 +35,37 @@ function init (){
 
    //check finished tasks
    if(finishedTasks.length > 0){
+    //add delete finished tasks button
+    var finishedTasksDesc = document.getElementsByClassName('finished')[0];
+
+    var clearAllButton = document.createElement('button');
+    clearAllButton.innerHTML = 'Clear all';
+    clearAllButton.className="btn btn-primary clear-all";
+
+    //Good article about passing params to eventListener https://toddmotto.com/avoiding-anonymous-javascript-functions/
+    clearAllButton.addEventListener('click', function(){
+      deleteAllTasks("finished-tasks");
+    });
+
+    finishedTasksDesc.appendChild( clearAllButton );
+
     sortedFinishedTasks.forEach(function(finishedTask) {
       showTask(finishedTask.timeStamp, finishedTask.taskTitle, finishedTask.description, finishedTask.dueDate, finishedTask.taskStatus);
     });
    }
 }
 init();
+
+//Clear from LS function
+function deleteAllTasks(arrayToBeEmpty){
+  alert(arrayToBeEmpty);
+  localStorage.setItem(arrayToBeEmpty, JSON.stringify([]) );
+
+  //TODO: Delete all from the DOM
+  // while (ul.firstChild) {
+  //   ul.removeChild(ul.firstChild);
+  // }
+}
 
 //Save task to the LS ad return timeStamp
 function saveToLS(taskTitle, description, dueDate, taskStatus) {
