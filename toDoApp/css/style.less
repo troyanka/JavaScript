@@ -1,30 +1,33 @@
-
+// Good FLEXBOX tutorial https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
 .main-container{
-//     display: flex;
-//     flex-direction: row;
-//     justify-content:space-between;
+    display: flex;
+    
+    //flex-direction: row;
+    //flex-wrap: wrap;
+    flex-flow: row wrap; //This is a shorthand flex-direction and flex-wrap
 
-//     .form-wrapper{
-//         display: flex;
-//         flex-direction: column;
-//         flex-grow: 1;
-//     }
-//     .existing-tasks, .finished-tasks{
-//         flex-grow: 2;
+    >div {
+        padding: 10px;
+        flex-grow: 1;
+    }
 
-//         .task{
-//             flex-basis: 20%;
-//             margin: 5px;
-//         }
-//     }
+    .task-form{
+        flex-basis: 20%;
+    }
+    .tasks-panel{
+        flex-basis: 40%;
+        border-left: 2px solid gray;
 
-//     .card-deck h1{
-//         flex-basis: 100%;
-//     }
+        .card-deck{
+            display: flex;
+            justify-content: flex-start;
 
-button.task-done{
-    margin-left: 10px;
+            .task{
+                margin-bottom: 5px;
+                flex-basis: 28%;
+                max-width: 28%;
+            }
+        }
+    }
 }
 
-
-}

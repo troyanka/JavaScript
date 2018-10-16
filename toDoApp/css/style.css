@@ -1,3 +1,32 @@
-.main-container button.task-done {
-  margin-left: 10px;
+.main-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+}
+.main-container > div {
+  padding: 10px;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+.main-container .task-form {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+}
+.main-container .tasks-panel {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  border-left: 2px solid gray;
+}
+.main-container .tasks-panel .card-deck {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+.main-container .tasks-panel .card-deck .task {
+  margin-bottom: 5px;
+  -ms-flex-preferred-size: 28%;
+      flex-basis: 28%;
+  max-width: 28%;
 }

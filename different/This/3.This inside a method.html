@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+
+</head>
+
+<body>
+<a href="https://www.youtube.com/watch?v=NV9sHLX-jZU">
+    Link to the you tube video about 'this'
+</a>
+
+    <script>
+    //"use strict";
+
+    this.table = 'window table';
+
+    this.garage = {
+        table: 'garage table',
+        cleanTable(){
+          //here we use 'this' and it means table inside the garage object
+          console.log(`cleaning ${this.table}`);
+        }
+    };
+
+    let johnsRoom = {
+        table: 'johns table',
+        cleanTable(){
+            //here we use 'this' and it means table inside the johnsRoom object
+            console.log(`cleaning ${this.table}`);
+        } 
+    };
+
+    //3.'this' inside a method
+    johnsRoom.cleanTable();
+    garage.cleanTable();
+    </script>
+</body>
+
+</html>

@@ -2,29 +2,50 @@
 let finishedTasks = localStorage.getItem('finished-tasks') ? JSON.parse(localStorage.getItem('finished-tasks')) : [];
 let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
+//TODO: Add sort according to due date https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+const sortedTasks = tasks.slice().sort(); //// new instance of tasks array is created and sorted
+const sortedFinishedTasks = finishedTasks.slice().sort(); //// new instance of finishedTasks array is created and sorted
+
+//Sort task according to their due dates
+function compare(a, b) {
+  const taskA = a.dueDate;
+  const taskB = b.dueDate;
+
+  let comparison = 0;
+  if (taskA > taskB) {
+    comparison = 1;
+  } else if (taskA < taskB) {
+    comparison = -1;
+  }
+  return comparison;
+}
+
+sortedTasks.sort(compare);
+sortedFinishedTasks.sort(compare);
+
 //Checks if there are existing (finished) tasks in the LS
 function init (){
-  //check unfunished tasks
+  //check unfinished tasks
    if(tasks.length > 0){
-    tasks.forEach(function(task) {
-       showTask(task.timeStamp, task.taskTitle, task.description, task.DueDate, task.taskStatus);
+    sortedTasks.forEach(function(task) {
+       showTask(task.timeStamp, task.taskTitle, task.description, task.dueDate, task.taskStatus);
     });
    }
 
    //check finished tasks
    if(finishedTasks.length > 0){
-    finishedTasks.forEach(function(finishedTask) {
-      showTask(finishedTask.timeStamp, finishedTask.taskTitle, finishedTask.description, finishedTask.DueDate, finishedTask.taskStatus);
+    sortedFinishedTasks.forEach(function(finishedTask) {
+      showTask(finishedTask.timeStamp, finishedTask.taskTitle, finishedTask.description, finishedTask.dueDate, finishedTask.taskStatus);
     });
    }
 }
 init();
 
 //Save task to the LS ad return timeStamp
-function saveToLS(taskTitle, description, DueDate, taskStatus) {
+function saveToLS(taskTitle, description, dueDate, taskStatus) {
    var timeStamp = new Date().getTime();
    
-   tasks.push( { timeStamp, taskTitle, description, DueDate, "taskStatus":taskStatus } );
+   tasks.push( { timeStamp, taskTitle, description, dueDate, "taskStatus":taskStatus } );
    localStorage.setItem('tasks', JSON.stringify(tasks) );
 
    return timeStamp;
@@ -47,7 +68,7 @@ function removeTask(event) {
 }
 
 //Show the task on the DOM
-function showTask( timeStamp, taskTitle, description, DueDate, status ){
+function showTask( timeStamp, taskTitle, description, dueDate, status ){
 
   var tasksDesc = document.querySelector('.existing-tasks');
   var doneTasksDesc = document.querySelector('.finished-tasks');
@@ -69,7 +90,7 @@ function showTask( timeStamp, taskTitle, description, DueDate, status ){
 
  //task due date
   var taskDate = document.createElement('p');
-  taskDate.innerHTML = DueDate;
+  taskDate.innerHTML = dueDate;
   taskDate.className = 'card-text';
 
   //task description text
@@ -80,7 +101,7 @@ function showTask( timeStamp, taskTitle, description, DueDate, status ){
   if(status != 'done'){
   //add delete button 
     var deleteButton = document.createElement('button');
-    deleteButton.innerHTML = 'Delete task';
+    deleteButton.innerHTML = 'Delete';
     deleteButton.className="btn btn-primary delete-task";
     deleteButton.addEventListener('click', removeTask);
 
@@ -108,14 +129,14 @@ var form = document.querySelector('form');
     
       var taskTitle = document.querySelector('.task-title');
       var description = document.querySelector('.task-description');
-      var DueDate = document.querySelector('.task-due-date');
+      var dueDate = document.querySelector('.task-due-date');
 
       //Create timeStamp and use it as id
-      var timeStamp = saveToLS(taskTitle.value, description.value, DueDate.value, 'open');
-      showTask(timeStamp, taskTitle.value, description.value, DueDate.value);
+      var timeStamp = saveToLS(taskTitle.value, description.value, dueDate.value, 'open');
+      showTask(timeStamp, taskTitle.value, description.value, dueDate.value);
 
       //empty form-fields
-      taskTitle.value = "";
-      description.value = "";
-      DueDate.value = "";
+      //taskTitle.value = "";
+      //description.value = "";
+      //dueDate.value = "";
   });
