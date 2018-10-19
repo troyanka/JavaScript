@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #sidebar {
+            float: left;
+            background-color: antiquewhite;
+            width:20%;
+            height: 300px;	
+            clear: both;	
+        }
+        #maincontent{
+            width: 80%;
+            float: left;
+            /* height: 300px; */
+        }
+        #header, #footer{
+            height: 100px;
+            background-color: aquamarine;
+            clear: both;
+        }
+        .card{
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 10px;
+            width: 200px;
+            float: left;
+            /* position: relative; */
+        }
+        .card img{
+            width: 90px;
+            float: left;
+            margin: 3px;
+        }
+
+        .twoImages{
+            background: yellow;
+            clear: both;
+        }
+
+        .twoImages img{
+            width: 100px;
+            float: right;
+        }
+
+        /* #blueImg{
+            clear:right;
+        } */
+
+
+        /* we can do it with position absolute, but it wont look good*/
+        /* .card img{
+            position: absolute;
+            left: 20%;
+            width: 90px;
+            margin: 3px;
+        } */
+
+        .manyImages{
+            background-color: bisque;
+            border: 1px solid red;
+            clear: both;
+        }
+        .manyImages img{
+            float: left;
+            width: 100px;
+            margin: 5px;
+        }
+          
+        .clearfix:after {
+            content: '.';
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="sidebar"></div>
+    <div id="maincontent">
+            <p>Floated elements remain a part of the flow of the web page. This is distinctly different than  page elements that use absolute positioning.</p>
+            <p>Absolutely positioned page elements are removed from the flow of the webpage. Absolutely positioned page elements will not affect the position of other elements and other elements will not affect them, whether they touch each other or not.</p>
+            <div class="photos">
+                <div class="card">
+                        <img src="../events-bekalut/landing/images/ashelim.jpg">
+                        <p>test test test test test test test test test test test test</p>
+                </div>
+                <div class="card">
+                        <img src="../events-bekalut/landing/images/ashelim.jpg">
+                        <p>test test test</p>
+                </div>
+
+
+                <div class="twoImages">
+                    <img src="../events-bekalut/landing/images/game_hertzel.png">
+                    <img id="blueImg" src="../events-bekalut//landing//images/pic_header.jpg">
+                    <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+                </div>
+
+                <div class="manyImages clearfix">
+                        <img src="../events-bekalut/landing/images/game_hertzel.png">
+                        <img src="../events-bekalut/landing/images/game_hertzel.png">
+                        <img src="../events-bekalut/landing/images/game_hertzel.png">
+                        <img src="../events-bekalut/landing/images/game_hertzel.png">
+                        <img src="../events-bekalut/landing/images/game_hertzel.png">
+                        <!-- <div style="clear: both;"></div> -->
+                </div>
+
+            </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

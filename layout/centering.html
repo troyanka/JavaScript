@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Centering</title>
+        <style>
+        body {
+            background: #f06d06;
+        }
+
+        header, nav {
+            text-align: center;
+            background: white;
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+       nav a {
+            text-decoration: none;
+            background: #333;
+            border-radius: 5px;
+            color: white;
+            padding: 3px 8px;
+        } 
+
+        main {
+        background: white;
+        margin: 20px 0;
+        padding: 10px;
+        }
+
+        main div {
+        background: black;
+        color: white;
+        padding: 15px;
+        max-width: 125px;
+        margin: 5px;
+        }
+
+        .inline-block-center {
+            text-align: center;
+        }
+        .inline-block-center div {
+            display: inline-block;
+            text-align: left;
+        }
+        .flex-center {
+            display: flex;
+            justify-content: center;
+        }
+        </style>
+    </head>
+    <body>
+            <header>
+                    This text is centered.
+            </header>
+            <nav role='navigation'>
+                    <a href="#0">One</a>
+                    <a href="#0">Two</a>
+                    <a href="#0">Three</a>
+                    <a href="#0">Four</a>
+            </nav>
+
+            <main class="inline-block-center">
+                    <div>
+                      I'm an element that is block-like with my siblings and we're centered in a row.
+                    </div>
+                    <div>
+                      I'm an element that is block-like with my siblings and we're centered in a row. I have more content in me than my siblings do.
+                    </div>
+                    <div>
+                      I'm an element that is block-like with my siblings and we're centered in a row.
+                    </div>
+                  </main>
+                  
+            <main class="flex-center">
+                    <div>
+                      I'm an element that is block-like with my siblings and we're centered in a row.
+                    </div>
+                    <div>
+                      I'm an element that is block-like with my siblings and we're centered in a row. I have more content in me than my siblings do.
+                    </div>
+                    <div>
+                      I'm an element that is block-like with my siblings and we're centered in a row.
+                    </div>
+            </main>
+    </body>
+</html>
