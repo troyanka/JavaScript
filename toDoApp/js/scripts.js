@@ -58,13 +58,14 @@ init();
 
 //Clear from LS function
 function deleteAllTasks(arrayToBeEmpty){
-  alert(arrayToBeEmpty);
   localStorage.setItem(arrayToBeEmpty, JSON.stringify([]) );
+  let finishedTasksDiv = document.querySelector('.finished-tasks');
+  
+  while (finishedTasksDiv.firstChild) {
+    finishedTasksDiv.removeChild(finishedTasksDiv.firstChild);
+  }
 
-  //TODO: Delete all from the DOM
-  // while (ul.firstChild) {
-  //   ul.removeChild(ul.firstChild);
-  // }
+  document.querySelector('.clear-all').remove();
 }
 
 //Save task to the LS ad return timeStamp
@@ -145,6 +146,8 @@ function showTask( timeStamp, taskTitle, description, dueDate, status ){
     deleteButton && taskBody.appendChild(deleteButton);
     addButton && taskBody.appendChild(addButton);
     taskDiv.appendChild(taskBody);
+
+    console.log(status);
 
     status == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
 }

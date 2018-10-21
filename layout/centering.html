@@ -62,7 +62,7 @@
             text-decoration: none;
         }
 
-        main.vertical-centering-line-heigt div{
+        main.vertical-centering-line-height div{
             background: black;
             color: white;
             height: 100px;
@@ -122,6 +122,102 @@
                 padding: 20px;
             }
 
+            div.ghost-center {
+                background: white;
+                width: 240px;
+                height: 200px;
+                margin: 20px;
+                color: white;
+                resize: vertical;
+                overflow: auto;
+                padding: 20px;
+                }
+
+                .ghost-center {
+                 position: relative;
+                }
+                .ghost-center::before {
+                    content: " ";
+                    display: inline-block;
+                    height: 100%;
+                    width: 1%;
+                    vertical-align: middle;
+                }
+                .ghost-center p {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 190px;
+                    margin: 0;
+                    padding: 20px;
+                    background: black;
+                }
+
+                main.vertical-centering-block-elem-with-known-height {
+                background: white;
+                height: 300px;
+                margin: 20px;
+                width: 300px;
+                position: relative;
+                resize: vertical;
+                overflow: auto;
+                }
+
+                main.vertical-centering-block-elem-with-known-height div {
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                right: 20px;
+                height: 100px;
+                margin-top: -70px;;
+                background: black;
+                color: white;
+                padding: 20px;
+                }
+
+                main.vertical-centering-block-elem-with-unknown-height {
+                    background: white;
+                    height: 300px;
+                    margin: 20px;
+                    width: 300px;
+                    position: relative;
+                    resize: vertical;
+                    overflow: auto;
+                }
+
+                main.vertical-centering-block-elem-with-unknown-height div {
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                right: 20px;
+                background: black;
+                color: white;
+                padding: 20px;
+                transform: translateY(-50%);
+                resize: vertical;
+                overflow: auto;
+                }
+
+                main.vertical-centering-block-elem-with-unknown-height-by-flex {
+                background: white;
+                height: 300px;
+                width: 200px;
+                padding: 20px;
+                margin: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                resize: vertical;
+                overflow: auto;
+                }
+
+                main.vertical-centering-block-elem-with-unknown-height-by-flex div {
+                background: black;
+                color: white;
+                padding: 20px;
+                resize: vertical;
+                overflow: auto;
+                }
+
         </style>
     </head>
     <body>
@@ -134,6 +230,28 @@
                     <a href="#0">Three</a>
                     <a href="#0">Four</a>
             </nav>
+
+            <main class="vertical-centering-block-elem-with-unknown-height-by-flex">
+                    <div>
+                       I'm a block-level element with an unknown height, centered vertically within my parent.
+                    </div>
+            </main>
+
+            <main class="vertical-centering-block-elem-with-unknown-height">
+                    <div>
+                       I'm a block-level element with an unknown height, centered vertically within my parent.
+                    </div>
+            </main> 
+
+            <main class="vertical-centering-block-elem-with-known-height">
+                    <div>
+                       I'm a block-level element with a fixed height, centered vertically within my parent.
+                    </div>
+            </main>
+
+            <div class="ghost-center">
+                    <p>I'm vertically centered multiple lines of text in a container. Centered with a ghost pseudo element</p>
+            </div>
 
             <div class="flex-center">
                 <p>I'm vertically centered multiple lines of text in a flexbox container.</p>
@@ -152,7 +270,7 @@
               </div>
 
 
-            <main class="vertical-centering-line-heigt">
+            <main class="vertical-centering-line-height">
                 <div>
                   I'm a centered line.
                 </div>
