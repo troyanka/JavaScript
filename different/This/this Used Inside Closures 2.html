@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+
+</head>
+
+<body>
+    <a href="https://www.sitepoint.com/mastering-javascripts-this-keyword/">Article about .this</a>
+
+<script>
+ var car = {
+  brand: "Nissan",
+  getBrand: function(){
+
+    var self = this; 
+
+    var closure = function(){
+      console.log(self.brand);
+    };
+    return closure();
+  }
+};
+car.getBrand();   // output: undefined
+</script>
+</body>
+</html>

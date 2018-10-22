@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>J query question</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            console.log("1", $("div.myClass"));
+            console.log("2", $("div.myClass2"));
+            console.log("3", $(".myClass"));
+            console.log("4", $(".myClass2"));
+            console.log("5", $("div[id='elementId']"));
+            console.log("6", $("#elementId"));
+            console.log("7", $("div:contains('123')"));
+        });
+    </script>
+</head>
+<body>
+        <div class="myClass myClass2" id="elementId">123</div> 
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Immediately-Invoked Function Expression (IIFE)</title>
+</head>
+
+<body>
+    <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">Link</a>
+
+
+<script>
+var result = (function () { 
+    var name = "Barry"; 
+    return name; 
+})(); 
+// Immediately creates the output: 
+console.log(result); // "Barry"
+</script>
+
+<script>
+// public part
+var publicVar = 111;
+var publicFunc = function(value) { console.log(value); };
+var publicObject = {
+    // no functions whatsoever
+};
+
+    // closure part
+    (function(pubObj){
+        // private variables and functions
+        var closureVar = 222;
+        var closureFunc = function(value){
+            // call public func
+            publicFunc(value);
+            // alert private variable
+            console.log(closureVar);
+        };
+
+        // add function to public object that accesses private functionality
+        pubObj.alertValues = closureFunc;
+
+        // mind the missing "var" which makes it a public variable
+        anotherPublic = 333;
+
+    })(publicObject);
+
+// alert 111 & alert 222
+publicObject.alertValues(publicVar);
+
+// try to access varaibles
+console.log(publicVar); // alert 111
+console.log(anotherPublic); // alert 333
+console.log(typeof(closureVar)); // alert "undefined"
+</script>
+
+<script>
+  (function foo(param){ console.log(`printing ${param}`); })('my param');
+</script>
+
+</body>
+
+</html>
