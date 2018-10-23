@@ -23,52 +23,51 @@ var cards = [
 
 var cardsContainer = document.querySelector('.cards');
 
-cards.forEach(element => {
+let duplicatedArray = cards.concat(cards);
+duplicatedArray.sort(() => 0.5 - Math.random());
+
+duplicatedArray.forEach(element => {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card-item';
     cardDiv.dataset.cardId = element.id;
     let backgroundImg = element.image;
     cardDiv.style.backgroundImage = `url(pic/${backgroundImg})`;
-    
-
-    console.log(backgroundImg);
-
-    //cardDiv.appendChild(backgroundImg);
     cardsContainer.appendChild(cardDiv);
 });
 
+cardsContainer.addEventListener("click", selectCard);
 
+let counter = 0;
+let firstSelectedId;
+// console.log("firstSelectedId", typeof firstSelectedId);
 
+function selectCard(e) {
+    let clicked = event.target;
+    
+    let selectedId = clicked.dataset.cardId;
+    console.log("selectedId", selectedId);
 
-// init();
+    // Do not allow the container div itself to be selected; only select divs inside
+    if(clicked.className == 'cards'){return;}
 
-// function init() {
-//   for(var i= 0; i < cards.length; i++) {
-//     var cardDiv = document.createElement('div');
-//     cardDiv.className = 'card-item';
-//     cardDiv.setAttribute('data-card-id', cards[i].id);
+    if(counter < 2){
 
-//     var backgroundImg = document.createElement('img');
-//     backgroundImg.setAttribute('src', 'pic/back.png');
-//     cardDiv.appendChild(backgroundImg);
-//     cardsContainer.appendChild(cardDiv);
-//   }
-// }
+        if(typeof firstSelectedId != "undefined"){ 
+            console.log(firstSelectedId, selectedId);
+            if(firstSelectedId == selectedId){
+              var selectedCards = document.querySelectorAll(`[data-card-id='${firstSelectedId}']`);
+              selectedCards.forEach(card => {
+                 card.style.visibility = 'hidden';
+                 firstSelectedId;
+              });
+            }
+        }
+        else firstSelectedId = selectedId;
 
-cardsContainer.addEventListener("click", showCard);
-
-function showCard(e) {
-    var cardId = event.target.parentElement.dataset.cardId;
-    console.log(cardId);
-    //var imgToShow = cards.cardId
-    //console.log(imgToShow);
+        counter++;
+        // Add selected class
+        clicked.classList.add('selected');
+    }
+  
 }
 
-// function runMe() {
-//     for( var i = 0; i < 3; i++ ){
-//         setTimeout( function() {
-//             console.log( i );
-//         }, 1000 );
-//     }
-// }
-// runMe();
