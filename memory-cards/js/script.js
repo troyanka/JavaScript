@@ -38,36 +38,65 @@ duplicatedArray.forEach(element => {
 cardsContainer.addEventListener("click", selectCard);
 
 let counter = 0;
-let firstSelectedId;
+let firstSelectedId = ' ';
+let isAlreadySelected = false;
+let secondSelectedId = ' ';
+let delay = 200;
 // console.log("firstSelectedId", typeof firstSelectedId);
 
 function selectCard(e) {
     let clicked = event.target;
     
     let selectedId = clicked.dataset.cardId;
-    console.log("selectedId", selectedId);
+    //console.log("selectedId", selectedId);
 
     // Do not allow the container div itself to be selected; only select divs inside
     if(clicked.className == 'cards'){return;}
 
     if(counter < 2){
-
-        if(typeof firstSelectedId != "undefined"){ 
-            console.log(firstSelectedId, selectedId);
-            if(firstSelectedId == selectedId){
-              var selectedCards = document.querySelectorAll(`[data-card-id='${firstSelectedId}']`);
-              selectedCards.forEach(card => {
-                 card.style.visibility = 'hidden';
-                 firstSelectedId;
-              });
-            }
-        }
-        else firstSelectedId = selectedId;
-
         counter++;
-        // Add selected class
+
+        if(counter === 1){
+            firstSelectedId = selectedId;
+        }
+        else{
+                secondSelectedId = selectedId; 
+                if(clicked.classList.contains('selected')){
+                    isAlreadySelected = !isAlreadySelected;
+                } 
+        }
         clicked.classList.add('selected');
+
+        if(firstSelectedId != ' ' && secondSelectedId != ' '){
+            if(firstSelectedId == secondSelectedId && !isAlreadySelected){
+                //Same cards
+                setTimeout(match, delay);
+                setTimeout(resetGuesses, delay);
+             }
+             else{
+                //Different cards
+                 setTimeout(resetGuesses, delay);
+                 isAlreadySelected = !isAlreadySelected;
+             }
+        }
     }
   
+}
+
+const resetGuesses = () => {
+    var selected = document.querySelectorAll('.selected');
+    selected.forEach(selectedItem=>{
+                selectedItem.classList.remove('selected');
+    });
+
+    firstSelectedId, secondSelectedId = ' ';
+    counter = 0;
+}
+
+const match = () => {
+    var selected = document.querySelectorAll('.selected');
+    selected.forEach(selectedItem=>{
+        selectedItem.classList.add('match');
+     });
 }
 

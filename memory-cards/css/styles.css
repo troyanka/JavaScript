@@ -15,3 +15,6 @@
 .cards .selected {
   border-color: red;
 }
+.cards .match {
+  background-image: none !important;
+}
