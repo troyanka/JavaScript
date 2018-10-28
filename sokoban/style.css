@@ -1,0 +1,28 @@
+
+
+table {
+    width: 500px;
+    height: 400px;
+}
+
+table td {
+    width: 10%;
+    height: 15px;
+
+}
+
+.empty{
+    background-color: #f21199;
+}
+.box{
+    background-color: brown;
+}
+.player{
+    background-color: green;
+}
+.wall{
+    background-color: black;
+}
+.target{
+    background-color: blue;
+}
