@@ -29,7 +29,7 @@ function init (){
   //check unfinished tasks
    if(tasks.length > 0){
     sortedTasks.forEach(function(task) {
-       showTask(task.timeStamp, task.taskTitle, task.description, task.dueDate, task.taskStatus);
+       showTask({"timeStamp":task.timeStamp, "taskTitle":task.taskTitle, "description":task.description, "dueDate":task.dueDate, "taskStatus":task.taskStatus});
     });
    }
 
@@ -95,7 +95,9 @@ function removeTask(event) {
 }
 
 //Show the task on the DOM
-function showTask( timeStamp, taskTitle, description, dueDate, status ){
+function showTask( taskObject ){
+
+  console.log("MYOBJ:", taskObject);
 
   var tasksDesc = document.querySelector('.existing-tasks');
   var doneTasksDesc = document.querySelector('.finished-tasks');
@@ -103,8 +105,8 @@ function showTask( timeStamp, taskTitle, description, dueDate, status ){
   //main div
   var taskDiv = document.createElement('div');
   taskDiv.className = 'task card border-info';
-  status == 'done' && (taskDiv.className = 'task card border-info bg-success');
-  taskDiv.setAttribute("data-note-id", timeStamp);
+  status == 'done' && (taskDiv.className = 'task card border-info bg-success')
+  taskDiv.setAttribute("data-note-id", taskObject.timeStamp);
 
   //task body
   var taskBody = document.createElement('div');
@@ -112,17 +114,17 @@ function showTask( timeStamp, taskTitle, description, dueDate, status ){
   
   //task title
   var taskHeader = document.createElement('div');
-  taskHeader.innerHTML = taskTitle;
+  taskHeader.innerHTML = taskObject.taskTitle;
   taskHeader.className = 'card-header';
 
  //task due date
   var taskDate = document.createElement('p');
-  taskDate.innerHTML = dueDate;
+  taskDate.innerHTML = taskObject.dueDate;
   taskDate.className = 'card-text';
 
   //task description text
   var taskDesc = document.createElement('p');
-  taskDesc.innerHTML = description;
+  taskDesc.innerHTML = taskObject.description;
   taskDesc.className = 'card-text task-due-date';
   
   if(status != 'done'){
@@ -147,22 +149,23 @@ function showTask( timeStamp, taskTitle, description, dueDate, status ){
     addButton && taskBody.appendChild(addButton);
     taskDiv.appendChild(taskBody);
 
-    console.log(status);
+    console.log(taskObject.status);
 
-    status == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
+    taskObject.status == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
 }
 
 var form = document.querySelector('form');
    form.addEventListener('submit', function (e) {
       e.preventDefault();
     
-      var taskTitle = document.querySelector('.task-title');
-      var description = document.querySelector('.task-description');
-      var dueDate = document.querySelector('.task-due-date');
-
+      var taskTitle = document.querySelector('.task-title').value;
+      var description = document.querySelector('.task-description').value;
+      var dueDate = document.querySelector('.task-due-date').value;
       //Create timeStamp and use it as id
-      var timeStamp = saveToLS(taskTitle.value, description.value, dueDate.value, 'open');
-      showTask(timeStamp, taskTitle.value, description.value, dueDate.value);
+      var timeStamp = saveToLS(taskTitle, description, dueDate, 'open');
+      console.log( timeStamp );
+
+      showTask({ "timeStamp": timeStamp, taskTitle, description, dueDate, "status":'open' });
 
       //empty form-fields
       //taskTitle.value = "";
