@@ -99,4 +99,3 @@ const match = () => {
         selectedItem.classList.add('match');
      });
 }
-

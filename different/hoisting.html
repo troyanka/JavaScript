@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hoisting</title>
+</head>
+<body>
+    <script>
+     //When you define a var it gets a function scope. When I define a function, and the var is defined withoin boundary of this function, it is available throughout the function.  
+     
+     var y = 1;
+     var x = function(){
+
+        var y = 1;
+     }
+
+     x();
+    </script>
+
+    <script>
+    //var lets you change the value any time.
+    //const - you cannot change the value once you define it in the first time
+    //let - it will be similar to var but since var is a function scope, let has what is called 'block scope' and it doesn`t do hoisting 
+
+    const Pi = 3.14;
+    //Pi = 2;//Assignment to constant variable.
+
+    let b = function(){
+        if( true ){
+          console.log( d );
+          let d = 1;
+        }
+        //console.log( d );
+    }
+    b();
+    </script>
+  
+</body>
+</html>

@@ -50,7 +50,7 @@ function init (){
     finishedTasksDesc.appendChild( clearAllButton );
 
     sortedFinishedTasks.forEach(function(finishedTask) {
-      showTask(finishedTask.timeStamp, finishedTask.taskTitle, finishedTask.description, finishedTask.dueDate, finishedTask.taskStatus);
+      showTask({"timeStamp":finishedTask.timeStamp, "taskTitle":finishedTask.taskTitle, "description":finishedTask.description, "dueDate":finishedTask.dueDate, "taskStatus": finishedTask.taskStatus});
     });
    }
 }
@@ -64,15 +64,16 @@ function deleteAllTasks(arrayToBeEmpty){
   while (finishedTasksDiv.firstChild) {
     finishedTasksDiv.removeChild(finishedTasksDiv.firstChild);
   }
-
   document.querySelector('.clear-all').remove();
 }
 
 //Save task to the LS ad return timeStamp
-function saveToLS(taskTitle, description, dueDate, taskStatus) {
+function saveToLS( myTask ) {
    var timeStamp = new Date().getTime();
-   
-   tasks.push( { timeStamp, taskTitle, description, dueDate, "taskStatus":taskStatus } );
+
+   myTask.timeStamp = timeStamp;
+
+   tasks.push( myTask );
    localStorage.setItem('tasks', JSON.stringify(tasks) );
 
    return timeStamp;
@@ -81,11 +82,13 @@ function saveToLS(taskTitle, description, dueDate, taskStatus) {
 //Remove task from the DOM & LS
 function removeTask(event) {
       var taskToDeleteId = event.target.parentElement.parentElement.dataset.noteId;
+      console.log( taskToDeleteId );
       var indexToDelete = tasks.findIndex(obj => obj.timeStamp == taskToDeleteId);
-      
+      console.log( indexToDelete );
+
       //push the deleted object to the finished-tasks array
       var ObjToDelete = tasks[indexToDelete];
-      ObjToDelete.taskStatus = 'done'
+      ObjToDelete.taskStatus = 'done';
       finishedTasks.push(ObjToDelete);
       tasks.splice(indexToDelete, 1);
       localStorage.setItem('tasks', JSON.stringify(tasks) );
@@ -94,18 +97,17 @@ function removeTask(event) {
       localStorage.setItem('finished-tasks', JSON.stringify(finishedTasks)); 
 }
 
+
+
 //Show the task on the DOM
 function showTask( taskObject ){
-
-  console.log("MYOBJ:", taskObject);
-
   var tasksDesc = document.querySelector('.existing-tasks');
   var doneTasksDesc = document.querySelector('.finished-tasks');
 
   //main div
   var taskDiv = document.createElement('div');
   taskDiv.className = 'task card border-info';
-  status == 'done' && (taskDiv.className = 'task card border-info bg-success')
+  taskObject.taskStatus == 'done' && (taskDiv.className = 'task card border-info')
   taskDiv.setAttribute("data-note-id", taskObject.timeStamp);
 
   //task body
@@ -127,7 +129,7 @@ function showTask( taskObject ){
   taskDesc.innerHTML = taskObject.description;
   taskDesc.className = 'card-text task-due-date';
   
-  if(status != 'done'){
+  if(taskObject.taskStatus != 'done'){
   //add delete button 
     var deleteButton = document.createElement('button');
     deleteButton.innerHTML = 'Delete';
@@ -149,9 +151,7 @@ function showTask( taskObject ){
     addButton && taskBody.appendChild(addButton);
     taskDiv.appendChild(taskBody);
 
-    console.log(taskObject.status);
-
-    taskObject.status == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
+    taskObject.taskStatus == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
 }
 
 var form = document.querySelector('form');
@@ -161,11 +161,11 @@ var form = document.querySelector('form');
       var taskTitle = document.querySelector('.task-title').value;
       var description = document.querySelector('.task-description').value;
       var dueDate = document.querySelector('.task-due-date').value;
-      //Create timeStamp and use it as id
-      var timeStamp = saveToLS(taskTitle, description, dueDate, 'open');
-      console.log( timeStamp );
 
-      showTask({ "timeStamp": timeStamp, taskTitle, description, dueDate, "status":'open' });
+      //Create timeStamp and use it as id
+      var timeStamp = saveToLS({taskTitle, description, dueDate, "taskStatus":'open'});
+
+      showTask({ "timeStamp": timeStamp, taskTitle, description, dueDate, "taskStatus":'open' });
 
       //empty form-fields
       //taskTitle.value = "";
