@@ -3,7 +3,6 @@
 .slideshow-container {
     max-width: 1000px;
     margin: auto;
-    background-color: gray;
     position: relative;
 
     .mySlides{
@@ -46,6 +45,22 @@
     }
     .next{
         right: 0;
+    }
+
+    .dots {
+        text-align: center;
+
+        .dot{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: grey;
+            display: inline-block;
+            margin: 5px;
+        }
+        .relevantDot{
+            background-color: red;
+        }
     }
 }
 
