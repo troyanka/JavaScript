@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  margin: auto;
+  background-color: gray;
+  position: relative;
+}
+.slideshow-container .mySlides {
+  position: relative;
+  /* Number text (1/3 etc) */
+}
+.slideshow-container .mySlides .numberText {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.slideshow-container .mySlides .text {
+  text-align: center;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+}
+.slideshow-container .prev,
+.slideshow-container .next {
+  height: 40px;
+  padding: 10px;
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+.slideshow-container .prev:hover,
+.slideshow-container .next:hover {
+  background-color: #0000004f;
+}
+.slideshow-container .next {
+  right: 0;
+}
