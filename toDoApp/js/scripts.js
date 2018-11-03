@@ -29,7 +29,7 @@ function init (){
   //check unfinished tasks
    if(tasks.length > 0){
     sortedTasks.forEach(function(task) {
-       showTask({"timeStamp":task.timeStamp, "taskTitle":task.taskTitle, "description":task.description, "dueDate":task.dueDate, "taskStatus":task.taskStatus});
+       showTask({"timeStamp":task.timeStamp, "taskTitle":task.taskTitle, "description":task.description, "dueDate":task.dueDate});
     });
    }
 
@@ -50,7 +50,7 @@ function init (){
     finishedTasksDesc.appendChild( clearAllButton );
 
     sortedFinishedTasks.forEach(function(finishedTask) {
-      showTask({"timeStamp":finishedTask.timeStamp, "taskTitle":finishedTask.taskTitle, "description":finishedTask.description, "dueDate":finishedTask.dueDate, "taskStatus": finishedTask.taskStatus});
+      showTask({"timeStamp":finishedTask.timeStamp, "taskTitle":finishedTask.taskTitle, "description":finishedTask.description, "dueDate":finishedTask.dueDate});
     });
    }
 }
@@ -80,21 +80,29 @@ function saveToLS( myTask ) {
 }
 
 //Remove task from the DOM & LS
-function removeTask(event) {
+function finishTask(event) {
       var taskToDeleteId = event.target.parentElement.parentElement.dataset.noteId;
-      console.log( taskToDeleteId );
       var indexToDelete = tasks.findIndex(obj => obj.timeStamp == taskToDeleteId);
-      console.log( indexToDelete );
 
-      //push the deleted object to the finished-tasks array
+      // //push the deleted object to the finished-tasks array
       var ObjToDelete = tasks[indexToDelete];
-      ObjToDelete.taskStatus = 'done';
       finishedTasks.push(ObjToDelete);
-      tasks.splice(indexToDelete, 1);
-      localStorage.setItem('tasks', JSON.stringify(tasks) );
-      event.target.parentElement.parentElement.remove();
+      // tasks.splice(indexToDelete, 1);
+      // localStorage.setItem('tasks', JSON.stringify(tasks) );
+      // event.target.parentElement.parentElement.remove();
+
+      deleteTask(event);
 
       localStorage.setItem('finished-tasks', JSON.stringify(finishedTasks)); 
+}
+
+function deleteTask(event) {
+  var taskToDeleteId = event.target.parentElement.parentElement.dataset.noteId;
+  var indexToDelete = tasks.findIndex(obj => obj.timeStamp == taskToDeleteId);
+  var ObjToDelete = tasks[indexToDelete];
+  tasks.splice(indexToDelete, 1);
+  localStorage.setItem('tasks', JSON.stringify(tasks) );
+  event.target.parentElement.parentElement.remove();
 }
 
 
@@ -107,7 +115,7 @@ function showTask( taskObject ){
   //main div
   var taskDiv = document.createElement('div');
   taskDiv.className = 'task card border-info';
-  taskObject.taskStatus == 'done' && (taskDiv.className = 'task card border-info')
+  //taskObject.taskStatus == 'done' && (taskDiv.className = 'task card border-info')
   taskDiv.setAttribute("data-note-id", taskObject.timeStamp);
 
   //task body
@@ -134,13 +142,13 @@ function showTask( taskObject ){
     var deleteButton = document.createElement('button');
     deleteButton.innerHTML = 'Delete';
     deleteButton.className="btn btn-primary delete-task";
-    deleteButton.addEventListener('click', removeTask);
+    deleteButton.addEventListener('click', deleteTask);
 
     //add done button 
     var addButton = document.createElement('button');
     addButton.innerHTML = 'Done';
     addButton.className = "btn btn-success task-done";
-    addButton.addEventListener('click', removeTask);
+    addButton.addEventListener('click', finishTask);
   }
 
   //append created task divs to the panel
@@ -151,8 +159,8 @@ function showTask( taskObject ){
     addButton && taskBody.appendChild(addButton);
     taskDiv.appendChild(taskBody);
 
-    taskObject.taskStatus == 'done' ? doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
-}
+    //doneTasksDesc.appendChild(taskDiv) : tasksDesc.appendChild(taskDiv);
+ }
 
 var form = document.querySelector('form');
    form.addEventListener('submit', function (e) {
@@ -163,9 +171,9 @@ var form = document.querySelector('form');
       var dueDate = document.querySelector('.task-due-date').value;
 
       //Create timeStamp and use it as id
-      var timeStamp = saveToLS({taskTitle, description, dueDate, "taskStatus":'open'});
+      var timeStamp = saveToLS({taskTitle, description, dueDate});
 
-      showTask({ "timeStamp": timeStamp, taskTitle, description, dueDate, "taskStatus":'open' });
+      showTask({ "timeStamp": timeStamp, taskTitle, description, dueDate});
 
       //empty form-fields
       //taskTitle.value = "";
