@@ -8,50 +8,101 @@
 <body>
     <script>
     
-        // function foo(){
-        //     function bar() {
-        //         return 3;
-        //     }
-        //     return bar();
-        //     function bar() {
-        //         return 8;
-        //     }
-        // }
-        // alert(foo());
-
-
-        // function foo(){
-        //     var bar = function() {
-        //         return 3;
-        //     };
-        //     return bar();
-        //     var bar = function() {
-        //         return 8;
-        //     };
-        // }
-        // alert(foo());
-
-        // alert(foo());
-        //     function foo(){
-        //         var bar = function() {
-        //             return 3;
-        //         };
-        //         return bar();
-        //         var bar = function() {
-        //             return 8;
-        //         };
-        //     }
-
-        function foo(){
+        /*function foo(){
+            function bar() {
+                return 3;
+            }
             return bar();
+            function bar() {
+                return 8;
+            }
+        }
+        alert(foo());*/
+
+
+        /*function foo(){
             var bar = function() {
                 return 3;
             };
+            return bar();
             var bar = function() {
                 return 8;
             };
         }
-        alert(foo());
+        alert(foo());*/
+
+        /*alert(foo());
+            function foo(){
+                var bar = function() {
+                    return 3;
+                };
+                return bar();
+                var bar = function() {
+                    return 8;
+                };
+                //return bar();
+            }*/
+
+        // function foo(){
+        //     return bar();
+        //     var bar = function() {
+        //         return 3;
+        //     };
+        //     var bar = function() {
+        //         return 8;
+        //     };
+        // }
+        // alert(foo());
+
+       /*function foo(){
+            var a = 1;
+            return function innerFoo(num){
+                console.log(num + a);
+            }
+            innerFoo(10);
+       }
+      console.log(foo());*/
+
+      /*var Person = {
+          name : 'Danny',
+          play :function (){
+              console.log ('my name is', this.name)
+          }
+      }
+
+      console.log(Person.play());//Danny
+      var foo = Person.play;
+      console.log(foo());*/
+
+
+     /*let myLog = function(str){
+        let splitted = [...str];
+        let transformed = Array.from(splitted).map(letter => `${letter} `);
+        let newSrt = '';
+        transformed.forEach(letter => newSrt+=letter);
+      
+        console.log(newSrt);
+      }
+      myLog('hello world');*/
+
+      /*function Str(str){
+          this.sentance = str;
+          this.convertString = function(){
+              console.log('searching for the name....');
+            setTimeout(function(){
+                let splitted = [...this.sentance];
+                let transformed = Array.from(splitted).map(letter => `${letter} `);
+                let newSrt = '';
+                transformed.forEach(letter => newSrt+=letter);
+            
+                console.log(newSrt);
+            }.bind(this), 1000);
+        };
+      }
+
+      let myStr = new Str('My name is vika!');
+      myStr.convertString();*/
+    
 </script>
 </body>
 </html>

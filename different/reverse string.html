@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function reverse(str){
+     return  str.split('').reverse().join('');
+     
+    }
+    var results = reverse('Hello vika');
+    console.log(results);
+
+    </script>
+
+<script>
+    function reverse(str){
+        var reverted = '';
+        for(var i=0; i< str.length; i++){
+            reverted = str[i] + reverted;
+        }
+        return  reverted;
+        }
+    var results = reverse('My string to Revert');
+    console.log(results);
+</script>
+
+<script>
+    function reverse(str){
+
+        return reverted = str.split('').reduce(function(substring, currentLetter){
+           return currentLetter + substring; 
+        }, '');
+       
+        }
+    var results = reverse('Revert via Array');
+    console.log(results);
+</script>
+
+<script>
+var x = 5;
+   
+   var init = function(){
+     x = x+ 3;
+     return x * 2;
+   };
+    
+   var result = init();
+   console.log( result + x );</script>
+
+</body>
+</html>

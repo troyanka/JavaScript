@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function buzz(num){
+
+            for(var i = 1; i <= num; i++){
+                if(i % 5 === 0 && i % 3 === 0){
+                 console.log(i, 'FizzBuzz');
+                }
+                else if(i % 3 === 0){
+                    console.log(i, 'Fizz');
+                }
+                else if(i % 5 === 0){
+                    console.log(i, 'Buzz');
+                }
+                else{
+                    console.log(i);
+                }
+            }
+            
+        }
+
+        buzz(20);
+    </script>
+</body>
+</html>
