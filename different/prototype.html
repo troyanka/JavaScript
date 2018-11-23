@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototype</title>
+</head>
+<body>
+    <!-- <script>
+    String.prototype.strAndLen = function (){
+        console.log(this.toString());
+    };
+    'My Prototype func'.strAndLen();
+    </script> -->
+    <!-- <script>
+    function User(){
+
+    }
+    User.prototype.name = 'vika';
+    User.prototype.getName = function(){
+        console.log(this.name);
+    }
+
+    let obj = new User();
+    obj.getName();
+    </script> -->
+    <!-- <script>
+    function Food(name){
+        this.name = name;
+        this.introduce = function(){
+          console.log(this.name);
+        };
+    }
+
+    Food.prototype.detectColor = function(){
+        let color;
+        if(this.name == 'ananas'){
+            color = 'yellow';
+        }
+        else if(this.name == 'cucamber'){
+            color = 'green';
+        }
+        console.log(`My color is: ${color}`);
+    }
+
+    var ananas = new Food('ananas');
+    ananas.introduce();
+    ananas.detectColor();
+    </script> -->
+    <!-- <script>
+        function Person(){
+            this.id = 8;
+        }
+        Person.prototype.getId = function(){
+            console.log(this.id);
+        };
+
+        let obj = new Person();
+        obj.getId();
+    </script> -->
+    
+<script>    
+        var Http = function(){
+            this.url = 'domain.com';
+        };
+            
+        Http.prototype.url = 'ebay.com';
+            
+        var ob = new Http();
+        console.log( ob );
+ </script>
+
+</body>
+</html>
