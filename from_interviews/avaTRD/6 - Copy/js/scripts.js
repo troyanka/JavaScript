@@ -7,7 +7,11 @@
 var arr = process([1,2, [4,5]]);
 console.log(arr);*/
 
-/*var a = {},
+/*
+All JavaScript object keys are strings. Even if you pass an object is a key, the object's toString() will be called on it, and the key will get the string value "[object Object]".
+
+
+var a = {},
     b = { key: 'b'},
     c = { key: 'c'}
 
