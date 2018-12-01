@@ -6,17 +6,16 @@
 </head>
 <body>
     <script>
-      // https://wsvincent.com/javascript-currying/ - need to read about it
-          function add(a){
-             return function (b){
-               return a+b;
-              }
+
+          // Please implement summation function:
+          function add(x){
+            //  return function (b){
+            //    return a+b;
+            //   }
             }
 
-          var res = add(2)(3); 
-          console.log(res);
-          var res2 = add(1)(3)(7); 
-          console.log(res2);
+          add(2)(3); //5
+          add(1)(3)(7); //11
       </script>
 </body>
 </html>

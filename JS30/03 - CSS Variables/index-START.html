@@ -63,17 +63,9 @@
    function handleUpdate(){
     const nameEvent = this.name;
     const myEvent = this.value;
-    const suffix = this.dataset.sizing;
-    
-        if(nameEvent == 'spacing'){
-          spacing = `${myEvent}${suffix}`;
-        }
-        else if(nameEvent == 'blur'){
-          blur = `${myEvent}${suffix}`;
-        }
-        else if(nameEvent == 'base'){
-          color = `${myEvent}`;
-        }
+    const suffix = this.dataset.sizing || ' ';
+
+    document.documentElement.style.setProperty(`--${nameEvent}`, `${myEvent}${suffix}`);
    }
 
    $inputs.forEach(input=>{

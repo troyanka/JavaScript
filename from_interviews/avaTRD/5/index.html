@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Advanced form</title>
+</head>
+<body>
+    <script>
+        function ensure(value){
+          try {
+            if(value === undefined) throw "undefined value";
+            if(value === null) throw "null value";
+            return value;
+          }catch (error) {
+            alert(`Errorr is: ${error}`);
+          }
+        }
+            console.log(ensure(null));
+    </script>
+  </body>
+</html>
+
