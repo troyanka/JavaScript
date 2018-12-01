@@ -56,17 +56,30 @@
   </style>
 
   <script>
-    const inputs = document.querySelectorAll('.controls input');
+   const $inputs = document.querySelectorAll('.controls input');
+   let blur, spacing, color;
 
-    function handleUpdate(e){
-      const suffix = this.dataset.sizing;
-      const size = suffix ? `${this.value}${suffix}` : this.value;
 
-      document.documentElement.style.setProperty(`--${this.name}`, size);
-    }
+   function handleUpdate(){
+    const nameEvent = this.name;
+    const myEvent = this.value;
+    const suffix = this.dataset.sizing;
+    
+        if(nameEvent == 'spacing'){
+          spacing = `${myEvent}${suffix}`;
+        }
+        else if(nameEvent == 'blur'){
+          blur = `${myEvent}${suffix}`;
+        }
+        else if(nameEvent == 'base'){
+          color = `${myEvent}`;
+        }
+   }
 
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+   $inputs.forEach(input=>{
+      input.addEventListener('change', handleUpdate);
+      input.addEventListener('mousemove', handleUpdate);
+   });
   </script>
 
 </body>

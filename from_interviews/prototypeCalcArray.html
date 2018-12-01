@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototype log function</title>
+</head>
+<body>
+   <script>
+    let numbersArr = [10, 20, 45, 40, 78];
+
+    // create single source of trooth
+    let numbersCache = Object.assign([], numbersArr);
+    
+    Array.prototype.calc = () => numbersArr.reduce((total = 0,elem) => total + elem);
+
+    Array.prototype.calc2 = () => {
+     let total = 0;  
+     for(let numb of numbersArr){
+        total+= numb;
+     }
+     return total;
+    }
+
+    console.log(numbersArr.calc());
+    console.log(numbersArr.calc2());
+   </script>
+</body>
+</html>
