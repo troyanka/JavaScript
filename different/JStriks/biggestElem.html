@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://sarathsaleem.github.io/JavaScriptTasks/?fbclid=IwAR3WK0pxxv6kOi7-STHg09DqRG3URPSDc6b-00i-s12PhxCiuWzZ_PvHsRY">Link</a>
+    <script>
+        let myArray = [1, 2, 3, 4, 10, 19, 5, 6, 7];
+        let maxNumber = myArray[0];
+
+        myArray.forEach(function(num){
+            if(num > maxNumber){
+                maxNumber = num;
+            } 
+        });
+        console.log(maxNumber);
+    </script>
+    
+    <!-- <script>
+        let myArray = [1, 2, 3, 4, 10, 19, 5, 6, 7];
+        let maxNumber = Math.max(...myArray);
+        console.log(maxNumber);
+    </script> -->
+    
+    <!-- <script>
+         let myArray = [1, 2, 3, 4, 10,  19, 5, 6, 7];
+         let maxNumber = myArray[0];
+
+         for (let i = 1; i < myArray.length; i++){
+            myArray[i] > maxNumber ? maxNumber = myArray[i] : '';
+         }
+
+         console.log(maxNumber);
+    </script> -->
+</body>
+</html>
