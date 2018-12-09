@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://sarathsaleem.github.io/JavaScriptTasks/?fbclid=IwAR3WK0pxxv6kOi7-STHg09DqRG3URPSDc6b-00i-s12PhxCiuWzZ_PvHsRY">Link</a>
+    <script>
+      let objectsArray = [{a : 'a', b : 'b'}, {a : 'a'}, {a : 'a', b : 'b', c : 'c'}];
+      let cashedArray = Object.assign([], objectsArray);
+      //let objKeys = Object.keys(obj);
+
+      objectsArray.sort(function(a,b){
+             return Object.keys(a).length - Object.keys(b).length;
+      });
+      
+      console.log("sorted:", objectsArray);
+      console.log("original:", cashedArray);
+    </script>
+</body>
+</html>

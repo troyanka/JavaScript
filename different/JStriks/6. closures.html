@@ -9,10 +9,15 @@
 <body>
     <a href="http://sarathsaleem.github.io/JavaScriptTasks/?fbclid=IwAR3WK0pxxv6kOi7-STHg09DqRG3URPSDc6b-00i-s12PhxCiuWzZ_PvHsRY">Link</a>
     <script>
-      let obj = {a : 'a', b : 'b', c : 'c'};
-      let objKeys = Object.keys(obj);
-      console.log(objKeys);
 
+        function add(num){
+           return function(inner_num){
+               let total =  num + inner_num;
+               return total;
+           }
+        }
+        let a = add(2)(3); //5
+        console.log(a);
     </script>
 </body>
 </html>

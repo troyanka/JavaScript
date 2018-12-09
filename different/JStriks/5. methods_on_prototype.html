@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://sarathsaleem.github.io/JavaScriptTasks/?fbclid=IwAR3WK0pxxv6kOi7-STHg09DqRG3URPSDc6b-00i-s12PhxCiuWzZ_PvHsRY">Link</a>
+    <script>
+        Number.prototype.plus = function (num){
+           let total = this + num;
+           return total;
+        }
+        Number.prototype.minus = function (num){
+              let total = this - num;
+              return total;
+        };
+
+        let a = (5).plus(3).minus(6); //2
+        console.log(a);
+    </script>
+</body>
+</html>
