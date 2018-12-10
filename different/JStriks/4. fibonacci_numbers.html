@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var fibonacci = (function(){
+       var arr = [0,1];
+       return function(){
+         var num = arr[arr.length-1];
+         var length = arr.length;
+
+         arr.push(arr[length-1] + arr[length-2]);
+         return num;
+       }
+    })();
+
+    var i;
+    for (i = 0; i < 10; i++) {
+            console.log(fibonacci());
+    }
+    </script>
+</body>
+</html>
