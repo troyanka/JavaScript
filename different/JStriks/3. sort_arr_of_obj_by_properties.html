@@ -12,11 +12,11 @@
       let objectsArray = [{a : 'a', b : 'b'}, {a : 'a'}, {a : 'a', b : 'b', c : 'c'}];
       let cashedArray = Object.assign([], objectsArray);
       //let objKeys = Object.keys(obj);
-
-      objectsArray.sort(function(a,b){
-             return Object.keys(a).length - Object.keys(b).length;
-      });
       
+      objectsArray.sort(function (a, b){
+          return Object.keys(a).length - Object.keys(b).length;
+      })
+
       console.log("sorted:", objectsArray);
       console.log("original:", cashedArray);
     </script>
